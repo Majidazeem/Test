@@ -10,6 +10,33 @@
     <meta property="og:description" content="Download Exclusive WhatsApp Mods, XML Themes & VIP Tools. Anti-Ban Secure System.">
     <meta property="og:image" content="https://i.postimg.cc/SYY94wTH/20260101-082111.jpg">
     <meta name="theme-color" content="#e0ebe9">
+    <!-- PWA Support -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="MA LEGEND">
+    <link rel="apple-touch-icon" href="https://i.ibb.co/9mkRYT12/1773365624558.jpg">
+    <link rel="manifest" id="pwaManifest">
+    <script>
+    // PWA Manifest inject
+    var manifest = {
+        name: "MA LEGEND | VIP Elite Store",
+        short_name: "MA LEGEND",
+        description: "WhatsApp Mods, XML Themes & VIP Tools",
+        start_url: "./",
+        display: "standalone",
+        background_color: "#e0ebe9",
+        theme_color: "#00796b",
+        orientation: "portrait",
+        icons: [
+            { src: "https://i.ibb.co/9mkRYT12/1773365624558.jpg", sizes: "192x192", type: "image/jpeg" },
+            { src: "https://i.ibb.co/9mkRYT12/1773365624558.jpg", sizes: "512x512", type: "image/jpeg" }
+        ]
+    };
+    var blob = new Blob([JSON.stringify(manifest)], {type:'application/json'});
+    var url = URL.createObjectURL(blob);
+    document.getElementById('pwaManifest').setAttribute('href', url);
+    </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
     <style>
@@ -315,6 +342,9 @@
         <a onclick="showInfo('policy');playClick()"><i class="fas fa-file-contract"></i> Privacy Policy</a>
         <div style="margin:18px 0;height:2px;background:var(--bg);box-shadow:var(--shadow-in);border-radius:5px;"></div>
         <a href="https://whatsapp.com/channel/0029VarS46O3QxRtTZO0z60x" target="_blank"><i class="fab fa-whatsapp"></i> Join WA Channel</a>
+        <div style="margin-top:20px;border-radius:20px;overflow:hidden;box-shadow:var(--shadow-out);animation:sideFloat 4s ease-in-out infinite;position:relative;">
+            <img src="https://i.postimg.cc/t12bNvNk/8b1442b79eae4f4e7c0f9b909570a61f.jpg" style="width:100%;display:block;border-radius:20px;" onerror="this.style.display='none'">
+        </div>
     </div>
 </nav>
 
@@ -349,7 +379,19 @@
     <input type="text" id="search" placeholder="Search mods & features..." onkeyup="doSearch()">
 </div>
 
+<!-- AD -->
+<div style="width:300px;height:250px;margin:8px auto 18px;display:block;position:relative;z-index:1;">
+    <script>atOptions={'key':'d0ab0eaa45634b64bb926835ba1f28cf','format':'iframe','height':250,'width':300,'params':{}};</script>
+    <script src="https://www.highperformanceformat.com/d0ab0eaa45634b64bb926835ba1f28cf/invoke.js"></script>
+</div>
+
 <main class="grid" id="appGrid"></main>
+
+<!-- AD after grid -->
+<div style="width:300px;height:250px;margin:8px auto 18px;display:block;position:relative;z-index:1;">
+    <script>atOptions={'key':'d0ab0eaa45634b64bb926835ba1f28cf','format':'iframe','height':250,'width':300,'params':{}};</script>
+    <script src="https://www.highperformanceformat.com/d0ab0eaa45634b64bb926835ba1f28cf/invoke.js"></script>
+</div>
 
 <!-- SPECS OVERLAY -->
 <div id="specsOverlay" class="overlay">
@@ -383,6 +425,10 @@
 
 <!-- FOOTER -->
 <footer>
+    <div style="width:300px;height:250px;margin:0 auto 26px;display:block;">
+        <script>atOptions={'key':'d0ab0eaa45634b64bb926835ba1f28cf','format':'iframe','height':250,'width':300,'params':{}};</script>
+        <script src="https://www.highperformanceformat.com/d0ab0eaa45634b64bb926835ba1f28cf/invoke.js"></script>
+    </div>
     <div class="footer-logo">MA LEGEND <i class="fas fa-check-circle verified-badge"></i></div>
     <div style="display:flex;justify-content:center;margin-bottom:28px;">
         <a href="https://whatsapp.com/channel/0029VarS46O3QxRtTZO0z60x" target="_blank" class="footer-social-icon"><i class="fab fa-whatsapp"></i></a>
@@ -449,18 +495,46 @@
         <p style="font-size:0.75rem;color:var(--subtext);margin-top:10px;font-weight:600;">Key admin se WhatsApp ya Telegram par lein</p>
     </div>
 
-    <!-- FREE REPORT TEXTS -->
+    <!-- FREE / PRO REPORT TEXTS TABS -->
     <div class="report-tools-section" style="margin-top:8px;">
-        <h3><span class="section-badge">🆓</span> FREE REPORT TEXTS</h3>
-        <p style="font-size:0.78rem;color:var(--subtext);font-weight:600;margin-bottom:14px;padding:0 2px;">Copy karo aur WhatsApp report mein paste karo</p>
-        <div id="freeTextsList"><div class="tools-loading"><i class="fas fa-spinner fa-spin"></i> Loading...</div></div>
-    </div>
+        <h3><span class="section-badge">📝</span> REPORT TEXTS</h3>
 
-    <!-- PRO REPORT TEXTS -->
-    <div class="report-tools-section">
-        <h3><span class="section-badge">⭐</span> PRO REPORT TEXTS</h3>
-        <p style="font-size:0.78rem;color:var(--subtext);font-weight:600;margin-bottom:14px;padding:0 2px;">Pro key se unlock karo — powerful report texts</p>
-        <div id="proTextsList"><div class="tools-loading"><i class="fas fa-spinner fa-spin"></i> Loading...</div></div>
+        <!-- Tab Buttons -->
+        <div style="display:flex;gap:12px;margin-bottom:18px;">
+            <button id="tabFreeBtn" onclick="switchTextTab('free')" style="flex:1;padding:14px;border-radius:16px;border:none;background:var(--bg);color:var(--blue);font-weight:900;font-size:0.9rem;cursor:pointer;box-shadow:var(--shadow-in);font-family:'Nunito',sans-serif;display:flex;align-items:center;justify-content:center;gap:8px;">
+                <i class="fas fa-lock-open"></i> FREE
+            </button>
+            <button id="tabProBtn" onclick="switchTextTab('pro')" style="flex:1;padding:14px;border-radius:16px;border:none;background:var(--bg);color:var(--subtext);font-weight:900;font-size:0.9rem;cursor:pointer;box-shadow:var(--shadow-out);font-family:'Nunito',sans-serif;display:flex;align-items:center;justify-content:center;gap:8px;">
+                <i class="fas fa-lock"></i> PRO ⭐
+            </button>
+        </div>
+
+        <!-- FREE Tab Content -->
+        <div id="tabFreeContent">
+            <p style="font-size:0.78rem;color:var(--subtext);font-weight:600;margin-bottom:14px;">Copy karo aur WhatsApp report mein paste karo</p>
+            <div id="freeTextsList"><div class="tools-loading"><i class="fas fa-spinner fa-spin"></i> Loading...</div></div>
+        </div>
+
+        <!-- PRO Tab Content -->
+        <div id="tabProContent" style="display:none;">
+            <div id="proTextsUnlocked" style="display:none;">
+                <p style="font-size:0.78rem;color:var(--subtext);font-weight:600;margin-bottom:14px;">Pro report texts — powerful aur effective</p>
+                <div id="proTextsList"><div class="tools-loading"><i class="fas fa-spinner fa-spin"></i> Loading...</div></div>
+            </div>
+            <div id="proTextsLocked">
+                <div style="background:var(--bg);border-radius:22px;padding:32px 20px;text-align:center;box-shadow:var(--shadow-in);margin-bottom:14px;">
+                    <i class="fas fa-lock" style="font-size:2.5rem;color:var(--blue);margin-bottom:14px;display:block;"></i>
+                    <div style="font-family:'Orbitron',sans-serif;font-size:0.9rem;color:var(--blue);font-weight:900;margin-bottom:8px;">PRO TEXTS LOCKED</div>
+                    <div style="font-size:0.8rem;color:var(--subtext);font-weight:600;margin-bottom:20px;">Admin se Pro Key lo aur unlock karo</div>
+                    <button onclick="showKeyUnlock();playClick()" style="width:100%;padding:15px;border-radius:14px;border:none;background:linear-gradient(135deg,var(--blue),var(--blue-light));color:#fff;font-weight:900;font-size:0.9rem;cursor:pointer;font-family:'Orbitron',sans-serif;letter-spacing:1px;box-shadow:0 4px 16px rgba(0,121,107,0.35);">🔑 KEY SE UNLOCK KARO</button>
+                </div>
+                <div style="background:var(--bg);border-radius:16px;padding:14px 16px;box-shadow:var(--shadow-in);">
+                    <p style="font-size:0.8rem;font-weight:800;color:var(--text);margin-bottom:6px;">💰 Pricing:</p>
+                    <p style="font-size:0.8rem;font-weight:700;color:var(--blue);">⏱ Weekly: 200 PKR (7 Din)</p>
+                    <p style="font-size:0.8rem;font-weight:700;color:var(--blue);margin-top:4px;">📅 Monthly: 500 PKR (30 Din)</p>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Contact -->
@@ -795,7 +869,7 @@ function showInfo(type){
     var content=document.getElementById('infoContent'),title=document.getElementById('infoTitle');
     if(type==='about'){title.innerText='Developer Profile';content.innerHTML='<div class="vip-info-panel" style="text-align:center;"><img src="https://i.ibb.co/9mkRYT12/1773365624558.jpg" style="width:105px;border-radius:50%;border:4px solid var(--bg);padding:4px;margin-bottom:16px;box-shadow:var(--shadow-out);"><h2 style="font-family:\'Orbitron\',sans-serif;color:var(--blue);letter-spacing:2px;font-size:1.05rem;">MA LEGEND <i class="fas fa-check-circle verified-badge"></i></h2><p style="color:var(--green);font-weight:900;font-size:0.75rem;letter-spacing:3px;margin-bottom:13px;">✓ VERIFIED DEVELOPER</p><p style="color:var(--subtext);line-height:1.8;font-weight:600;">Pakistan\'s premier Android modding authority.</p></div><div class="vip-info-panel"><h3><i class="fas fa-code"></i> SKILL MATRIX</h3><div class="skill-row"><div class="skill-info"><span>Anti-Ban Logic</span><span>100%</span></div><div class="progress-bar"><div class="progress-fill" style="width:100%"></div></div></div><div class="skill-row"><div class="skill-info"><span>Modding</span><span>95%</span></div><div class="progress-bar"><div class="progress-fill" style="width:95%"></div></div></div></div>';}
     else if(type==='contact'){title.innerText='Support Hub';content.innerHTML='<div class="vip-info-panel"><h3><i class="fas fa-headset"></i> ELITE SUPPORT</h3><a href="https://whatsapp.com/channel/0029VarS46O3QxRtTZO0z60x" target="_blank" class="contact-vip-item wa"><i class="fab fa-whatsapp"></i><div><h4>WhatsApp VIP</h4><span>Join Official Channel</span></div></a><a href="https://t.me/LegendMode_banchack_whatsapp" target="_blank" class="contact-vip-item tg"><i class="fab fa-telegram-plane"></i><div><h4>Telegram Elite</h4><span>Fastest Mod Updates</span></div></a><a href="https://www.youtube.com/@legendmod407" target="_blank" class="contact-vip-item yt"><i class="fab fa-youtube"></i><div><h4>YouTube Channel</h4><span>Tutorials & Proofs</span></div></a></div>';}
-    else if(type==='policy'){title.innerText='Privacy Protocol';content.innerHTML='<div class="vip-info-panel"><h3><i class="fas fa-shield-halved"></i> DATA SECURITY</h3><ul class="policy-list" style="list-style:none;"><li><i class="fas fa-check"></i><div><strong>Zero Logs:</strong> We do not store any user data.</div></li><li><i class="fas fa-check"></i><div><strong>Safe Links:</strong> All downloads are scanned.</div></li></ul></div>';}
+    else if(type==='policy'){title.innerText='Privacy Protocol';content.innerHTML='<div style="border-radius:22px;overflow:hidden;box-shadow:var(--shadow-out);margin-bottom:26px;animation:sideFloat 4s ease-in-out infinite;"><img src="https://i.postimg.cc/RqTY6JX5/1d155d70622965027c4973aea5dd8940.jpg" style="width:100%;display:block;border-radius:22px;" onerror="this.style.display=\'none\'"></div><div class="vip-info-panel"><h3><i class="fas fa-shield-halved"></i> DATA SECURITY</h3><ul class="policy-list" style="list-style:none;"><li><i class="fas fa-check"></i><div><strong>Zero Logs:</strong> We do not store any user data.</div></li><li><i class="fas fa-check"></i><div><strong>End-to-End:</strong> All mod features run locally.</div></li><li><i class="fas fa-check"></i><div><strong>Safe Links:</strong> All downloads are scanned.</div></li></ul></div><div class="vip-info-panel"><h3><i class="fas fa-gavel"></i> TERMS OF USE</h3><p style="color:var(--subtext);line-height:1.6;font-weight:600;">For educational purposes only. Use at your own risk.</p></div>';}
     document.getElementById('infoOverlay').style.display='flex';document.body.style.overflow='hidden';history.pushState({v:'info'},'');
     document.getElementById('sidebar').classList.remove('active');document.getElementById('globalOverlay').classList.remove('active');
 }
@@ -820,6 +894,37 @@ document.getElementById('footerCopy').addEventListener('click',function(){fc++;c
 function openAdminLogin(){var pass=prompt('🔐 Admin Password:');if(pass==='malegend2026'||pass==='admin123'){document.getElementById('adminPanel').style.display='block';}else if(pass!==null){showToast('❌ Wrong Password!');}}
 var ks='',kt=null;
 document.addEventListener('keydown',function(e){ks+=e.key.toLowerCase();clearTimeout(kt);kt=setTimeout(function(){ks='';},1500);if(ks.indexOf('adm')>-1){ks='';openAdminLogin();}});
+
+// ===== REPORT TEXT TAB SWITCH =====
+window.switchTextTab = function(tab){
+    var freeBtn = document.getElementById('tabFreeBtn');
+    var proBtn  = document.getElementById('tabProBtn');
+    var freeContent = document.getElementById('tabFreeContent');
+    var proContent  = document.getElementById('tabProContent');
+    if(tab === 'free'){
+        freeContent.style.display = 'block';
+        proContent.style.display  = 'none';
+        freeBtn.style.boxShadow = 'var(--shadow-in)';
+        freeBtn.style.color = 'var(--blue)';
+        proBtn.style.boxShadow  = 'var(--shadow-out)';
+        proBtn.style.color  = 'var(--subtext)';
+    } else {
+        freeContent.style.display = 'none';
+        proContent.style.display  = 'block';
+        proBtn.style.boxShadow  = 'var(--shadow-in)';
+        proBtn.style.color  = 'var(--blue)';
+        freeBtn.style.boxShadow = 'var(--shadow-out)';
+        freeBtn.style.color = 'var(--subtext)';
+        // Pro check
+        if(window._isProUser){
+            document.getElementById('proTextsLocked').style.display = 'none';
+            document.getElementById('proTextsUnlocked').style.display = 'block';
+        } else {
+            document.getElementById('proTextsLocked').style.display = 'block';
+            document.getElementById('proTextsUnlocked').style.display = 'none';
+        }
+    }
+};
 
 // ===== REPORT TEXT FUNCTIONS =====
 window.copyReportText = function(key, isFree){
@@ -921,6 +1026,14 @@ function activateProUI(data){
     document.querySelectorAll('[id^="lock_"]').forEach(function(el){el.innerHTML='<i class="fas fa-lock-open"></i> PRO';el.classList.add('unlocked');});
     var ks=document.getElementById('keyUnlockSection');
     if(ks)ks.style.display='none';
+    // Pro tab unlock
+    var locked=document.getElementById('proTextsLocked');
+    var unlocked=document.getElementById('proTextsUnlocked');
+    if(locked)locked.style.display='none';
+    if(unlocked)unlocked.style.display='block';
+    // Pro tab button update
+    var proBtn=document.getElementById('tabProBtn');
+    if(proBtn){proBtn.style.color='var(--blue)';proBtn.innerHTML='<i class="fas fa-lock-open"></i> PRO ⭐';}
 }
 // Check stored key on load
 checkStoredProKey();
