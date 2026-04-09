@@ -552,7 +552,14 @@ async function loadSiteSettings(){
         const snap=await get(ref(db,'siteSettings'));
         if(!snap.exists())return;
         const s=snap.val();
-        if(s.color){document.documentElement.style.setProperty('--blue',s.color);}
+        if(s.color){
+            // Yellow colors block karo — white bg par acha nahi lagta
+            const badColors=['#FFD700','#f0a500','#ffd700','#c8960c','#a07800','#f9c74f','#FFB300','#FFC107','#FFCA28','#ffff00','#yellow'];
+            if(!badColors.includes(s.color)){
+                document.documentElement.style.setProperty('--blue',s.color);
+                document.documentElement.style.setProperty('--gold',s.color);
+            }
+        }
         if(s.sound!==undefined)window.soundEnabled=s.sound;
         var mq=document.querySelector('.marquee');
         if(mq)mq.style.display=(s.marquee===false)?'none':'';
