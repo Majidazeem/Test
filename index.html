@@ -207,6 +207,23 @@
         .btn-report-use { padding:10px 18px; border-radius:12px; border:none; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif; font-size:0.82rem; background:var(--bg); color:var(--blue); box-shadow:var(--shadow-out); }
         .btn-report-use:active { box-shadow:var(--shadow-in); }
         .tools-loading { text-align:center; padding:30px; color:var(--subtext); font-weight:700; font-size:0.85rem; }
+        /* Report Text Cards */
+        .report-text-card { background:var(--bg); border-radius:20px; padding:18px; margin-bottom:14px; box-shadow:var(--shadow-out); position:relative; }
+        .report-text-card .rt-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:10px; }
+        .report-text-card .rt-title { font-weight:900; font-size:0.95rem; color:var(--text); display:flex; align-items:center; gap:8px; }
+        .report-text-card .rt-body { font-size:0.82rem; color:var(--subtext); font-weight:600; line-height:1.7; background:var(--bg); padding:12px 14px; border-radius:13px; box-shadow:var(--shadow-in); max-height:90px; overflow:hidden; position:relative; white-space:pre-wrap; word-break:break-word; }
+        .report-text-card .rt-body.expanded { max-height:none; }
+        .report-text-card .rt-body::after { content:''; position:absolute; bottom:0; left:0; right:0; height:30px; background:linear-gradient(transparent,var(--bg)); border-radius:0 0 13px 13px; }
+        .report-text-card .rt-body.expanded::after { display:none; }
+        .rt-actions { display:flex; gap:9px; margin-top:12px; }
+        .btn-copy-text { flex:1; padding:12px; border-radius:13px; border:none; background:var(--bg); color:var(--blue); font-weight:900; font-size:0.85rem; cursor:pointer; box-shadow:var(--shadow-out); font-family:'Nunito',sans-serif; display:flex; align-items:center; justify-content:center; gap:7px; transition:0.15s; }
+        .btn-copy-text:active { box-shadow:var(--shadow-in); transform:scale(0.97); }
+        .btn-copy-text.copied { color:var(--green); }
+        .btn-expand-text { width:44px; border-radius:13px; border:none; background:var(--bg); color:var(--subtext); font-size:1rem; cursor:pointer; box-shadow:var(--shadow-out); }
+        .btn-expand-text:active { box-shadow:var(--shadow-in); }
+        .rt-lock-overlay { position:absolute; top:0; left:0; right:0; bottom:0; background:rgba(224,235,233,0.85); border-radius:20px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; backdrop-filter:blur(2px); cursor:pointer; }
+        .rt-lock-overlay i { font-size:1.8rem; color:var(--blue); }
+        .rt-lock-overlay span { font-size:0.78rem; font-weight:900; color:var(--blue); font-family:'Orbitron',sans-serif; letter-spacing:1px; }
         .plan-cards { display:grid; grid-template-columns:1fr 1fr; gap:16px; padding:16px 16px 8px; }
         .plan-card { background:var(--bg); border-radius:24px; padding:20px 16px; text-align:center; box-shadow:var(--shadow-out); position:relative; overflow:hidden; }
         .plan-card::before { content:''; position:absolute; top:0; left:0; right:0; height:4px; background:linear-gradient(90deg,var(--blue),var(--blue-light)); }
@@ -444,6 +461,17 @@
         <div id="proToolsList"><div class="tools-loading"><i class="fas fa-spinner fa-spin"></i> Loading...</div></div>
     </div>
 
+    <!-- REPORT TEXTS from Firebase -->
+    <div class="report-tools-section">
+        <h3><span class="section-badge">📝</span> REPORT TEXTS</h3>
+        <p style="font-size:0.78rem;color:var(--subtext);font-weight:600;margin-bottom:14px;padding:0 2px;">Yeh texts copy karke WhatsApp report mein paste karo</p>
+        <div id="freeTextsList"><div class="tools-loading"><i class="fas fa-spinner fa-spin"></i> Loading...</div></div>
+        <div style="margin-top:6px;">
+            <div style="font-size:0.78rem;font-weight:900;color:var(--blue);margin-bottom:10px;display:flex;align-items:center;gap:6px;"><i class="fas fa-lock"></i> PRO TEXTS</div>
+            <div id="proTextsList"><div class="tools-loading"><i class="fas fa-spinner fa-spin"></i> Loading...</div></div>
+        </div>
+    </div>
+
     <!-- Contact -->
     <div class="reports-contact">
         <h3>📲 PRO KEY KAISE LEIN?</h3>
@@ -658,6 +686,46 @@ onValue(ref(db,'reportTools'), (snap) => {
     if(window._isProUser) updateProBadges(proTools);
 });
 
+// ===== REPORT TEXTS LOADER =====
+onValue(ref(db,'reportTexts'), (snap) => {
+    const data = snap.val();
+    const freeEl = document.getElementById('freeTextsList');
+    const proEl = document.getElementById('proTextsList');
+    if(!freeEl || !proEl) return;
+    if(!data){
+        freeEl.innerHTML = '<div class="tools-loading">Koi text nahi hai abhi</div>';
+        proEl.innerHTML = '<div class="tools-loading">Koi pro text nahi hai abhi</div>';
+        return;
+    }
+    const texts = Object.keys(data).map(k=>({firebaseKey:k,...data[k]}));
+    const freeTexts = texts.filter(t=>t.type==='free');
+    const proTexts = texts.filter(t=>t.type==='pro');
+    freeEl.innerHTML = freeTexts.length ? freeTexts.map(t=>renderTextCard(t,true)).join('') : '<div class="tools-loading">Koi free text nahi hai abhi</div>';
+    proEl.innerHTML = proTexts.length ? proTexts.map(t=>renderTextCard(t,false)).join('') : '<div class="tools-loading">Koi pro text nahi hai abhi</div>';
+});
+
+function renderTextCard(text, isFree){
+    const id = 'rtc_'+text.firebaseKey;
+    const bodyId = 'rtb_'+text.firebaseKey;
+    const lockHtml = isFree ? '' :
+        (!window._isProUser ?
+        '<div class="rt-lock-overlay" onclick="checkProAndUseTool(\''+text.firebaseKey+'\',\'#\')"><i class="fas fa-lock"></i><span>PRO UNLOCK KARO</span></div>' : '');
+    return '<div class="report-text-card" id="'+id+'">'
+        +'<div class="rt-header">'
+        +'<div class="rt-title"><i class="fas fa-file-alt" style="color:var(--blue)"></i>'+text.title+'</div>'
+        +(isFree ? '<span class="pro-lock"><i class="fas fa-lock-open"></i> FREE</span>' : '<span class="pro-lock" style="'+(window._isProUser?'color:var(--green)':'')+'"><i class="fas fa-'+(window._isProUser?'lock-open':'lock')+'"></i> PRO</span>')
+        +'</div>'
+        +'<div class="rt-body" id="'+bodyId+'">'+escHtml(text.body||'')+'</div>'
+        +'<div class="rt-actions">'
+        +'<button class="btn-copy-text" id="copybtn_'+text.firebaseKey+'" onclick="copyReportText(\''+text.firebaseKey+'\','+(isFree?'true':'false')+')"><i class="fas fa-copy"></i> COPY TEXT</button>'
+        +'<button class="btn-expand-text" onclick="toggleExpandText(\''+bodyId+'\',this)"><i class="fas fa-chevron-down"></i></button>'
+        +'</div>'
+        +lockHtml
+        +'</div>';
+}
+
+function escHtml(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
 function updateProBadges(proTools){
     proTools.forEach(t=>{
         const el=document.getElementById('lock_'+t.firebaseKey);
@@ -785,6 +853,35 @@ document.getElementById('footerCopy').addEventListener('click',function(){fc++;c
 function openAdminLogin(){var pass=prompt('🔐 Admin Password:');if(pass==='malegend2026'||pass==='admin123'){document.getElementById('adminPanel').style.display='block';}else if(pass!==null){showToast('❌ Wrong Password!');}}
 var ks='',kt=null;
 document.addEventListener('keydown',function(e){ks+=e.key.toLowerCase();clearTimeout(kt);kt=setTimeout(function(){ks='';},1500);if(ks.indexOf('adm')>-1){ks='';openAdminLogin();}});
+
+// ===== REPORT TEXT FUNCTIONS =====
+window.copyReportText = function(key, isFree){
+    if(!isFree && !window._isProUser){
+        showToast('🔒 Pro key chahiye!');
+        var ks=document.getElementById('keyUnlockSection');
+        if(ks){ks.style.display='block';ks.scrollIntoView({behavior:'smooth'});}
+        return;
+    }
+    var bodyEl = document.getElementById('rtb_'+key);
+    if(!bodyEl)return;
+    var txt = bodyEl.innerText || bodyEl.textContent;
+    navigator.clipboard.writeText(txt).then(function(){
+        var btn = document.getElementById('copybtn_'+key);
+        if(btn){btn.classList.add('copied');btn.innerHTML='<i class="fas fa-check"></i> COPIED!';}
+        showToast('✅ Text Copy Ho Gaya!');
+        setTimeout(function(){if(btn){btn.classList.remove('copied');btn.innerHTML='<i class="fas fa-copy"></i> COPY TEXT';}},2000);
+    }).catch(function(){
+        // Fallback
+        var ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);
+        showToast('✅ Text Copy Ho Gaya!');
+    });
+};
+window.toggleExpandText = function(bodyId, btn){
+    var el=document.getElementById(bodyId);
+    if(!el)return;
+    el.classList.toggle('expanded');
+    btn.querySelector('i').className = el.classList.contains('expanded') ? 'fas fa-chevron-up' : 'fas fa-chevron-down';
+};
 
 // ===== REPORTS =====
 window.openReports = function(){
