@@ -1,0 +1,858 @@
+<!-- © 2026 MA LEGEND | All Rights Reserved | Unauthorized copying prohibited -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>MA LEGEND | Official VIP Elite Store</title>
+    <link rel="icon" type="image/png" href="https://i.ibb.co/9mkRYT12/1773365624558.jpg">
+    <meta property="og:title" content="MA LEGEND | VIP Elite Store">
+    <meta property="og:description" content="Download Exclusive WhatsApp Mods, XML Themes & VIP Tools. Anti-Ban Secure System.">
+    <meta property="og:image" content="https://i.postimg.cc/SYY94wTH/20260101-082111.jpg">
+    <meta name="theme-color" content="#e0ebe9">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #e0ebe9;
+            --shadow-out: 8px 8px 18px #adc4c0, -8px -8px 18px #ffffff;
+            --shadow-in: inset 5px 5px 12px #adc4c0, inset -5px -5px 12px #ffffff;
+            --blue: #00796b;
+            --blue-light: #26a69a;
+            --gold: #00796b;
+            --green: #25c16f;
+            --red: #e74c3c;
+            --text: #2c3e60;
+            --subtext: #8898b8;
+        }
+        * { margin:0; padding:0; box-sizing:border-box; font-family:'Nunito',sans-serif; -webkit-tap-highlight-color:transparent; }
+        body { background:var(--bg); color:var(--text); overflow-x:hidden; }
+        #splash-screen { position:fixed; top:0; left:0; width:100%; height:100%; z-index:99999; display:flex; flex-direction:column; align-items:center; justify-content:center; overflow:hidden; background: #000; }
+        #splash-bg-img { position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; object-position:center top; opacity:0.55; animation: splashFloat 4s ease-in-out infinite; }
+        #splash-overlay { position:absolute; top:0; left:0; width:100%; height:100%; background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.5) 100%); }
+        @keyframes splashFloat { 0%{transform:scale(1.0) translateY(0px);} 50%{transform:scale(1.06) translateY(-8px);} 100%{transform:scale(1.0) translateY(0px);} }
+        #splash-screen.hidden { opacity:0; visibility:hidden; pointer-events:none; transition:opacity 0.4s, visibility 0.4s; }
+        .splash-icon-img { width:160px; height:160px; border-radius:22px; margin-bottom:22px; box-shadow:0 8px 40px rgba(0,0,0,0.8), 0 0 0 4px rgba(255,255,255,0.15); position:relative; z-index:2; object-fit:cover; object-position:center top; animation: iconBounce 3s ease-in-out infinite; }
+        @keyframes iconBounce { 0%,100%{transform:translateY(0px) scale(1);} 50%{transform:translateY(-10px) scale(1.04);} }
+        .splash-logo-text { font-family:'Orbitron',sans-serif; font-size:1.8rem; font-weight:800; color:#fff; letter-spacing:3px; margin-bottom:6px; position:relative; z-index:2; text-shadow:0 2px 10px rgba(0,0,0,0.8); }
+        .splash-sub-text { font-size:0.75rem; color:rgba(255,255,255,0.75); letter-spacing:3px; text-transform:uppercase; margin-bottom:32px; font-weight:700; position:relative; z-index:2; }
+        .splash-loader { position:relative; z-index:2; width:80px; height:5px; background:var(--bg); border-radius:10px; overflow:hidden; box-shadow:var(--shadow-in); }
+        .splash-loader-bar { height:100%; width:0%; background:linear-gradient(90deg,var(--blue),var(--blue-light)); border-radius:10px; animation:loadBar 2.8s ease forwards; }
+        @keyframes loadBar { 0%{width:0%} 100%{width:100%} }
+        header { height:78px; padding:0 18px; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; z-index:1000; background:var(--bg); box-shadow:0 4px 16px rgba(0,0,0,0.07); }
+        .brand-logo h1 { font-family:'Orbitron',sans-serif; font-size:1.15rem; font-weight:800; color:var(--blue); display:flex; align-items:center; gap:6px; }
+        .brand-logo h1 span { color:var(--blue-light); }
+        .verified-badge { color:var(--blue-light); font-size:0.8em; display:inline-block; animation:spinBadge 6s linear infinite; }
+        @keyframes spinBadge { 0%{transform:rotateY(0deg)} 50%{transform:rotateY(180deg)} 100%{transform:rotateY(360deg)} }
+        .btn-nav-icon { width:50px; height:50px; border-radius:16px; display:flex; align-items:center; justify-content:center; background:var(--bg); color:var(--blue); cursor:pointer; font-size:1.15rem; box-shadow:var(--shadow-out); border:none; position:relative; transition:box-shadow 0.15s, transform 0.15s; }
+        .btn-nav-icon:active { box-shadow:var(--shadow-in); transform:scale(0.95); }
+        .notif-dot { position:absolute; top:11px; right:11px; width:9px; height:9px; background:var(--red); border-radius:50%; box-shadow:0 0 6px var(--red); }
+        .marquee { background:var(--bg); color:var(--blue); padding:14px 18px; font-weight:800; overflow:hidden; white-space:nowrap; font-size:0.95rem; margin:14px 18px; border-radius:18px; box-shadow:var(--shadow-in); }
+        .marquee-inner { display:inline-block; animation:scrollText 40s linear infinite; }
+        @keyframes scrollText { from{transform:translateX(-100%)} to{transform:translateX(100%)} }
+        .tabs { display:flex; gap:12px; padding:8px 15px 18px; overflow-x:auto; scrollbar-width:none; }
+        .tab-btn { flex-shrink:0; padding:13px 22px; border-radius:16px; border:none; background:var(--bg); color:var(--subtext); font-weight:800; cursor:pointer; font-size:0.88rem; box-shadow:var(--shadow-out); transition:all 0.2s; font-family:'Nunito',sans-serif; }
+        .tab-btn.active { color:var(--blue); box-shadow:var(--shadow-in); }
+        .search-container { width:90%; max-width:550px; margin:0 auto 28px; background:var(--bg); padding:14px 22px; border-radius:50px; display:flex; align-items:center; gap:12px; box-shadow:var(--shadow-in); }
+        .search-container input { background:transparent; border:none; color:var(--text); outline:none; width:100%; font-size:1rem; font-weight:700; font-family:'Nunito',sans-serif; }
+        .search-container input::placeholder { color:var(--subtext); font-weight:600; }
+        .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(310px,1fr)); gap:22px; padding:0 16px 60px; max-width:1250px; margin:0 auto; }
+        .card { background:var(--bg); border-radius:28px; padding:24px; position:relative; box-shadow:var(--shadow-out); animation:fadeInUp 0.5s ease both; }
+        @keyframes fadeInUp { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
+        .vip-tag { position:absolute; top:-12px; right:20px; padding:6px 16px; background:var(--bg); color:var(--blue); font-size:0.68rem; font-weight:900; border-radius:12px; box-shadow:var(--shadow-out); font-family:'Orbitron',sans-serif; letter-spacing:1px; }
+        .card-head { display:flex; gap:16px; align-items:center; margin-bottom:20px; }
+        .card-head img { width:80px; height:80px; border-radius:22px; object-fit:cover; box-shadow:var(--shadow-out); }
+        .card-head h3 { font-weight:900; font-size:1.15rem; color:var(--text); margin-bottom:8px; }
+        .time-badge { font-size:0.76rem; color:var(--red); font-weight:800; padding:5px 12px; border-radius:20px; display:inline-flex; align-items:center; gap:6px; box-shadow:var(--shadow-in); background:var(--bg); }
+        .stars { color:var(--blue); font-size:1rem; margin-top:8px; letter-spacing:1px; }
+        .stars span { color:var(--subtext); font-size:0.8rem; font-weight:700; }
+        .card-actions { display:flex; gap:13px; }
+        .btn-view { flex:1; background:var(--bg); color:var(--blue); padding:15px; border-radius:18px; text-align:center; font-weight:900; cursor:pointer; font-size:0.98rem; box-shadow:var(--shadow-out); letter-spacing:1px; transition:box-shadow 0.15s, transform 0.15s; }
+        .btn-view:active { box-shadow:var(--shadow-in); transform:scale(0.98); }
+        .btn-share { width:56px; border-radius:18px; display:flex; align-items:center; justify-content:center; color:var(--subtext); cursor:pointer; font-size:1.2rem; background:var(--bg); box-shadow:var(--shadow-out); transition:box-shadow 0.15s, color 0.15s; }
+        .btn-share:active { box-shadow:var(--shadow-in); color:var(--blue); }
+        .sidebar { position:fixed; top:0; left:-320px; width:300px; height:100%; background:var(--bg); z-index:2001; padding:28px 20px; box-shadow:10px 0 28px rgba(0,0,0,0.09); transition:0.4s; overflow-y:auto; }
+        .sidebar.active { left:0; }
+        .sidebar-overlay { position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.32); z-index:2000; display:none; backdrop-filter:blur(4px); }
+        .sidebar-overlay.active { display:block; }
+        .side-profile { text-align:center; margin-bottom:26px; }
+        .side-avatar-img { width:90px; height:90px; border-radius:50%; border:4px solid var(--bg); box-shadow:var(--shadow-out); padding:4px; animation:spinLogo 15s linear infinite; }
+        @keyframes spinLogo { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+        .sidebar-section { margin-bottom:20px; padding:16px; border-radius:20px; box-shadow:var(--shadow-in); }
+        .status-header { font-size:0.72rem; color:var(--subtext); margin-bottom:10px; display:flex; justify-content:space-between; font-weight:800; text-transform:uppercase; letter-spacing:1px; }
+        .status-indicator { display:flex; align-items:center; gap:10px; color:var(--green); font-weight:800; font-size:0.98rem; }
+        .pulsing-dot { width:10px; height:10px; background:var(--green); border-radius:50%; box-shadow:0 0 8px var(--green); animation:pulse 1.5s infinite; }
+        @keyframes pulse { 0%{opacity:1} 50%{opacity:0.3} 100%{opacity:1} }
+        .theme-options { display:flex; gap:13px; justify-content:center; margin-top:10px; }
+        .theme-circle { width:28px; height:28px; border-radius:50%; cursor:pointer; box-shadow:var(--shadow-out); border:2px solid var(--bg); transition:0.3s; }
+        .side-links a { display:flex; align-items:center; gap:13px; padding:14px; color:var(--text); text-decoration:none; border-radius:18px; font-size:0.93rem; margin-bottom:11px; cursor:pointer; box-shadow:var(--shadow-out); font-weight:700; transition:box-shadow 0.15s; }
+        .side-links a:active { box-shadow:var(--shadow-in); }
+        .side-links a i { color:var(--blue); width:20px; text-align:center; }
+        .overlay { position:fixed; top:0; left:0; width:100%; height:100%; background:var(--bg); z-index:3000; display:none; flex-direction:column; overflow-y:auto; animation:slideIn 0.3s ease; }
+        @keyframes slideIn { from{transform:translateY(38px);opacity:0} to{transform:translateY(0);opacity:1} }
+        .overlay-header { padding:14px 18px; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; background:var(--bg); z-index:100; box-shadow:0 4px 12px rgba(0,0,0,0.06); }
+        .overlay-header span { font-family:'Orbitron',sans-serif; font-weight:800; color:var(--blue); font-size:0.88rem; }
+        .overlay-body { padding:28px 16px; max-width:750px; margin:0 auto; width:100%; padding-bottom:110px; }
+        .vip-info-panel { background:var(--bg); border-radius:26px; padding:26px; margin-bottom:22px; box-shadow:var(--shadow-out); }
+        .vip-info-panel h3 { color:var(--blue); font-family:'Orbitron',sans-serif; font-size:0.92rem; margin-bottom:18px; display:flex; align-items:center; gap:10px; border-bottom:1px solid rgba(0,121,107,0.1); padding-bottom:13px; }
+        .skill-row { margin-bottom:13px; }
+        .skill-info { display:flex; justify-content:space-between; margin-bottom:5px; font-size:0.86rem; font-weight:700; color:var(--subtext); }
+        .progress-bar { width:100%; height:9px; background:var(--bg); box-shadow:var(--shadow-in); border-radius:10px; overflow:hidden; }
+        .progress-fill { height:100%; border-radius:10px; background:linear-gradient(90deg,var(--blue),var(--blue-light)); }
+        .stats-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:24px; }
+        .stat-item { background:var(--bg); border-radius:20px; padding:18px; text-align:center; box-shadow:var(--shadow-in); }
+        .stat-item label { display:block; font-size:0.7rem; color:var(--subtext); margin-bottom:7px; font-weight:800; text-transform:uppercase; letter-spacing:1px; }
+        .stat-item value { font-weight:900; font-size:1.1rem; color:var(--blue); }
+        .contact-vip-item { display:flex; align-items:center; gap:16px; padding:20px; background:var(--bg); border-radius:20px; text-decoration:none; color:var(--text); box-shadow:var(--shadow-out); margin-bottom:13px; }
+        .contact-vip-item i { font-size:1.8rem; width:42px; text-align:center; }
+        .contact-vip-item.wa i { color:#25D366; } .contact-vip-item.tg i { color:#0088cc; } .contact-vip-item.yt i { color:#FF0000; }
+        .contact-vip-item div h4 { font-weight:900; margin-bottom:3px; }
+        .contact-vip-item div span { font-size:0.8rem; color:var(--subtext); font-weight:600; }
+        .slider { display:flex; gap:16px; overflow-x:auto; padding:6px 2px 24px; scrollbar-width:none; }
+        .slider img { height:230px; border-radius:16px; flex-shrink:0; box-shadow:var(--shadow-out); }
+        .safe-badge { background:var(--bg); color:var(--green); padding:16px; border-radius:16px; text-align:center; font-weight:800; margin-bottom:20px; box-shadow:var(--shadow-in); font-size:0.92rem; display:flex; align-items:center; justify-content:center; gap:10px; }
+        .policy-list li { padding:11px 0; border-bottom:1px solid rgba(0,121,107,0.08); display:flex; gap:11px; align-items:flex-start; line-height:1.6; font-weight:600; }
+        .policy-list li i { color:var(--green); margin-top:2px; }
+        .btn-watch-video { display:inline-flex; align-items:center; gap:10px; background:linear-gradient(135deg,#ff0000,#cc0000); color:#fff; padding:13px 24px; border-radius:14px; font-weight:800; font-size:0.98rem; text-decoration:none; margin-bottom:20px; box-shadow:0 5px 18px rgba(255,0,0,0.32); letter-spacing:1px; transition:0.3s; }
+        .modal-view { position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.42); z-index:4000; display:none; align-items:center; justify-content:center; padding:22px; backdrop-filter:blur(6px); }
+        .modal-content { background:var(--bg); border-radius:38px; width:100%; max-width:400px; padding:44px 28px; text-align:center; box-shadow:var(--shadow-out); }
+        .timer-val { font-size:4.8rem; font-weight:900; color:var(--blue); font-family:'Orbitron',sans-serif; margin:10px 0; }
+        .modal-content h3 { color:var(--text); font-family:'Orbitron',sans-serif; font-size:0.9rem; margin-bottom:16px; font-weight:800; }
+        .logs { font-family:monospace; font-size:0.8rem; color:var(--blue); text-align:left; background:var(--bg); padding:16px; border-radius:16px; height:105px; overflow:hidden; line-height:1.7; box-shadow:var(--shadow-in); }
+        #shareBackdrop { position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.28); z-index:9998; display:none; backdrop-filter:blur(3px); }
+        #shareBackdrop.active { display:block; }
+        #shareModal { position:fixed; bottom:0; left:0; width:100%; background:var(--bg); z-index:9999; border-radius:28px 28px 0 0; padding:22px 18px 42px; display:none; box-shadow:var(--shadow-out); }
+        #shareModal.active { display:block; animation:slideUp 0.3s ease; }
+        @keyframes slideUp { from{transform:translateY(100%)} to{transform:translateY(0)} }
+        .share-title { font-weight:900; font-size:0.85rem; color:var(--text); margin-bottom:18px; text-align:center; letter-spacing:2px; text-transform:uppercase; }
+        .share-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:16px; }
+        .share-item { display:flex; flex-direction:column; align-items:center; gap:7px; cursor:pointer; text-decoration:none; }
+        .share-item-icon { width:54px; height:54px; border-radius:17px; display:flex; align-items:center; justify-content:center; font-size:1.45rem; background:var(--bg); box-shadow:var(--shadow-out); }
+        .share-item span { font-size:0.66rem; color:var(--subtext); font-weight:800; }
+        .share-item.wa .share-item-icon { color:#25D366; } .share-item.tg .share-item-icon { color:#0088cc; } .share-item.fb .share-item-icon { color:#1877f2; } .share-item.cp .share-item-icon { color:var(--blue); }
+        .share-cancel { width:100%; padding:14px; border:none; border-radius:15px; background:var(--bg); color:var(--text); font-weight:900; font-size:0.98rem; cursor:pointer; box-shadow:var(--shadow-out); font-family:'Nunito',sans-serif; }
+        #notifModal { position:fixed; top:88px; right:16px; width:275px; background:var(--bg); z-index:2500; border-radius:20px; padding:16px; box-shadow:var(--shadow-out); display:none; }
+        .notif-item { padding:11px 0; border-bottom:1px solid rgba(0,121,107,0.08); font-size:0.86rem; display:flex; gap:10px; align-items:flex-start; font-weight:600; }
+        #adminPanel { position:fixed; top:0; left:0; width:100%; height:100%; background:var(--bg); z-index:8000; display:none; overflow-y:auto; }
+        .admin-header { background:var(--bg); padding:16px 20px; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(0,0,0,0.07); position:sticky; top:0; z-index:100; }
+        .admin-body { max-width:900px; margin:0 auto; padding:26px 16px 90px; }
+        .admin-card { background:var(--bg); border-radius:22px; padding:26px; margin-bottom:20px; box-shadow:var(--shadow-out); }
+        .admin-card h3 { color:var(--blue); font-family:'Orbitron',sans-serif; font-size:0.88rem; margin-bottom:20px; display:flex; align-items:center; gap:10px; }
+        .form-group { margin-bottom:16px; }
+        .form-group label { display:block; font-size:0.8rem; color:var(--subtext); margin-bottom:6px; font-weight:800; text-transform:uppercase; letter-spacing:1px; }
+        .form-input { width:100%; background:var(--bg); border:none; color:var(--text); padding:14px 17px; border-radius:13px; font-size:0.93rem; outline:none; box-shadow:var(--shadow-in); font-family:'Nunito',sans-serif; font-weight:600; }
+        .form-input:focus { box-shadow:var(--shadow-in), 0 0 0 2px var(--blue-light); }
+        select.form-input option { background:var(--bg); }
+        .form-row { display:grid; grid-template-columns:1fr 1fr; gap:13px; }
+        .btn-admin { padding:14px 26px; border-radius:13px; border:none; font-weight:900; cursor:pointer; font-size:0.98rem; box-shadow:var(--shadow-out); transition:0.2s; font-family:'Nunito',sans-serif; }
+        .btn-admin:active { box-shadow:var(--shadow-in); transform:scale(0.97); }
+        .btn-gold { background:var(--bg); color:var(--blue); } .btn-danger { background:var(--bg); color:var(--red); } .btn-green { background:var(--bg); color:var(--green); }
+        .apps-list-admin { display:grid; gap:13px; }
+        .app-item-admin { background:var(--bg); border-radius:17px; padding:17px; display:flex; align-items:center; gap:13px; box-shadow:var(--shadow-in); }
+        .app-item-admin img { width:54px; height:54px; border-radius:13px; object-fit:cover; box-shadow:var(--shadow-out); }
+        .app-item-admin .app-info { flex:1; }
+        .app-item-admin .app-info h4 { font-weight:900; font-size:0.97rem; }
+        .app-item-admin .app-info p { font-size:0.76rem; color:var(--subtext); margin-top:3px; font-weight:600; }
+        .app-actions { display:flex; gap:9px; }
+        .btn-icon { width:38px; height:38px; border-radius:11px; display:flex; align-items:center; justify-content:center; border:none; cursor:pointer; box-shadow:var(--shadow-out); background:var(--bg); font-size:0.92rem; }
+        .btn-icon:active { box-shadow:var(--shadow-in); }
+        .btn-edit { color:var(--blue); } .btn-del { color:var(--red); }
+        .tab-row { display:flex; gap:9px; flex-wrap:wrap; margin-bottom:16px; }
+        .badge-count { background:var(--blue); color:#fff; border-radius:50%; width:20px; height:20px; display:inline-flex; align-items:center; justify-content:center; font-size:0.68rem; font-weight:900; margin-left:6px; }
+        .admin-stats { display:grid; grid-template-columns:repeat(2,1fr); gap:13px; margin-bottom:20px; }
+        .stat-box { background:var(--bg); border-radius:17px; padding:17px; text-align:center; box-shadow:var(--shadow-out); }
+        .stat-box .num { font-family:'Orbitron',sans-serif; font-size:1.7rem; color:var(--blue); font-weight:900; }
+        .stat-box .lbl { font-size:0.68rem; color:var(--subtext); margin-top:4px; text-transform:uppercase; font-weight:800; }
+        .empty-state { text-align:center; padding:46px 18px; color:var(--subtext); }
+        .empty-state i { font-size:2.6rem; color:var(--blue); margin-bottom:13px; opacity:0.33; display:block; }
+        footer { text-align:center; padding:55px 18px 75px; background:var(--bg); box-shadow:0 -5px 18px rgba(0,0,0,0.06); }
+        .footer-logo { font-family:'Orbitron',sans-serif; color:var(--blue); font-size:1.45rem; letter-spacing:6px; margin-bottom:28px; font-weight:900; }
+        .footer-social-icon { display:inline-flex; width:52px; height:52px; align-items:center; justify-content:center; border-radius:50%; background:var(--bg); box-shadow:var(--shadow-out); color:var(--blue); font-size:1.3rem; margin:0 7px; text-decoration:none; transition:0.2s; }
+        #toast { position:fixed; bottom:85px; left:50%; transform:translateX(-50%); background:var(--blue); color:#fff; padding:11px 26px; border-radius:28px; font-weight:800; font-size:0.88rem; z-index:9999; display:none; box-shadow:0 6px 20px rgba(0,121,107,0.38); letter-spacing:1px; }
+        #iconPreview { display:none; margin-top:11px; }
+        #iconPreviewImg { width:62px; height:62px; border-radius:15px; box-shadow:var(--shadow-out); }
+        @keyframes sideFloat { 0%,100%{transform:translateY(0px); box-shadow:var(--shadow-out);} 50%{transform:translateY(-6px); box-shadow:0 12px 28px rgba(0,0,0,0.15);} }
+
+        /* ===== REPORTS OVERLAY ===== */
+        #reportsOverlay { position:fixed; top:0; left:0; width:100%; height:100%; background:var(--bg); z-index:3000; display:none; flex-direction:column; overflow-y:auto; animation:slideIn 0.3s ease; }
+        .reports-hero { background:linear-gradient(135deg,var(--blue),var(--blue-light)); padding:40px 20px; text-align:center; color:#fff; }
+        .reports-hero h1 { font-family:'Orbitron',sans-serif; font-size:1.4rem; font-weight:900; letter-spacing:3px; margin-bottom:8px; }
+        .reports-hero p { font-size:0.85rem; opacity:0.9; font-weight:700; }
+        .key-unlock-section { margin:0 16px 20px; background:var(--bg); border-radius:22px; padding:24px; box-shadow:var(--shadow-out); }
+        .key-unlock-section h3 { font-family:'Orbitron',sans-serif; color:var(--blue); font-size:0.9rem; margin-bottom:16px; display:flex; align-items:center; gap:10px; }
+        .key-input-row { display:flex; gap:10px; }
+        .key-input { flex:1; background:var(--bg); border:none; color:var(--text); padding:14px 17px; border-radius:13px; font-size:0.9rem; outline:none; box-shadow:var(--shadow-in); font-family:'Nunito',sans-serif; font-weight:600; }
+        .key-input:focus { box-shadow:var(--shadow-in),0 0 0 2px var(--blue-light); }
+        .btn-unlock { padding:14px 20px; border-radius:13px; border:none; font-weight:900; cursor:pointer; font-family:'Orbitron',sans-serif; font-size:0.75rem; background:linear-gradient(135deg,var(--blue),var(--blue-light)); color:#fff; box-shadow:0 4px 16px rgba(0,121,107,0.3); letter-spacing:1px; }
+        .pro-status-box { background:linear-gradient(135deg,var(--blue),var(--blue-light)); border-radius:18px; padding:20px; color:#fff; margin:0 16px 16px; text-align:center; }
+        .pro-status-box h4 { font-family:'Orbitron',sans-serif; font-size:1rem; margin-bottom:6px; }
+        .reports-contact { margin:0 16px 30px; }
+        .reports-contact h3 { font-family:'Orbitron',sans-serif; color:var(--blue); font-size:0.85rem; margin-bottom:14px; letter-spacing:1px; }
+        .report-contact-btn { display:flex; align-items:center; gap:14px; padding:16px 18px; border-radius:18px; background:var(--bg); box-shadow:var(--shadow-out); text-decoration:none; color:var(--text); margin-bottom:12px; font-weight:700; }
+        .report-contact-btn i { font-size:1.5rem; }
+        .report-contact-btn.wa i { color:#25D366; }
+        .report-contact-btn.tg i { color:#0088cc; }
+        .report-contact-btn div small { font-size:0.75rem; color:var(--subtext); font-weight:600; }
+
+        /* Report tool cards */
+        .report-tools-section { padding:0 16px 10px; }
+        .report-tools-section h3 { font-family:'Orbitron',sans-serif; color:var(--blue); font-size:0.85rem; margin-bottom:14px; display:flex; align-items:center; gap:10px; }
+        .report-tools-section h3 .section-badge { background:var(--bg); padding:4px 12px; border-radius:10px; box-shadow:var(--shadow-in); font-size:0.68rem; }
+        .report-tool-card { background:var(--bg); border-radius:20px; padding:18px; margin-bottom:14px; box-shadow:var(--shadow-out); display:flex; align-items:center; gap:14px; }
+        .report-tool-card .tool-icon { width:54px; height:54px; border-radius:15px; display:flex; align-items:center; justify-content:center; color:#fff; font-size:1.3rem; flex-shrink:0; box-shadow:var(--shadow-out); }
+        .report-tool-card .tool-info h4 { font-weight:900; font-size:0.95rem; margin-bottom:4px; }
+        .report-tool-card .tool-info p { font-size:0.78rem; color:var(--subtext); font-weight:600; }
+        .pro-lock { display:inline-flex; align-items:center; gap:6px; font-size:0.72rem; font-weight:800; color:var(--blue); background:var(--bg); padding:6px 12px; border-radius:20px; box-shadow:var(--shadow-in); }
+        .pro-lock.unlocked { color:var(--green); }
+        .btn-report-use { padding:10px 18px; border-radius:12px; border:none; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif; font-size:0.82rem; background:var(--bg); color:var(--blue); box-shadow:var(--shadow-out); }
+        .btn-report-use:active { box-shadow:var(--shadow-in); }
+        .tools-loading { text-align:center; padding:30px; color:var(--subtext); font-weight:700; font-size:0.85rem; }
+        .plan-cards { display:grid; grid-template-columns:1fr 1fr; gap:16px; padding:16px 16px 8px; }
+        .plan-card { background:var(--bg); border-radius:24px; padding:20px 16px; text-align:center; box-shadow:var(--shadow-out); position:relative; overflow:hidden; }
+        .plan-card::before { content:''; position:absolute; top:0; left:0; right:0; height:4px; background:linear-gradient(90deg,var(--blue),var(--blue-light)); }
+        .plan-badge-lbl { font-size:0.68rem; font-weight:900; letter-spacing:2px; text-transform:uppercase; color:var(--subtext); margin-bottom:10px; }
+        .plan-price { font-family:'Orbitron',sans-serif; font-size:1.4rem; color:var(--blue); font-weight:900; }
+        .plan-duration { font-size:0.75rem; color:var(--subtext); font-weight:700; margin:4px 0 12px; }
+        .plan-features-list { text-align:left; margin:12px 0; }
+        .plan-features-list li { list-style:none; padding:5px 0; font-size:0.8rem; font-weight:700; display:flex; gap:8px; align-items:center; border-bottom:1px solid rgba(0,121,107,0.08); }
+        .plan-features-list li i { color:var(--green); flex-shrink:0; }
+        .btn-buy-plan { width:100%; padding:12px; border-radius:14px; border:none; font-weight:900; cursor:pointer; font-family:'Orbitron',sans-serif; font-size:0.72rem; letter-spacing:1px; margin-top:8px; }
+        .btn-buy-free { background:var(--bg); color:var(--subtext); box-shadow:var(--shadow-out); }
+        .btn-buy-pro { background:linear-gradient(135deg,var(--blue),var(--blue-light)); color:#fff; box-shadow:0 6px 20px rgba(0,121,107,0.35); }
+    </style>
+</head>
+<body>
+
+<!-- SPLASH -->
+<div id="splash-screen">
+    <img id="splash-bg-img" src="https://i.postimg.cc/SYY94wTH/20260101-082111.jpg" onerror="this.style.display='none'">
+    <div id="splash-overlay"></div>
+    <img src="https://i.ibb.co/MDxQRv2n/d4d962aadc4c4342fac6e6b1eb0228bd.jpg" class="splash-icon-img" onerror="this.style.display='none'">
+    <div class="splash-logo-text">MA LEGEND</div>
+    <div class="splash-sub-text">VIP Elite Store</div>
+    <div class="splash-loader"><div class="splash-loader-bar"></div></div>
+</div>
+
+<!-- SHARE SHEET -->
+<div id="shareBackdrop" onclick="closeShareModal()"></div>
+<div id="shareModal">
+    <div class="share-title">⚡ Share App</div>
+    <div class="share-grid">
+        <a class="share-item wa" id="shareWA" href="#" target="_blank" onclick="closeShareModal()"><div class="share-item-icon"><i class="fab fa-whatsapp"></i></div><span>WhatsApp</span></a>
+        <a class="share-item tg" id="shareTG" href="#" target="_blank" onclick="closeShareModal()"><div class="share-item-icon"><i class="fab fa-telegram-plane"></i></div><span>Telegram</span></a>
+        <a class="share-item fb" id="shareFB" href="#" target="_blank" onclick="closeShareModal()"><div class="share-item-icon"><i class="fab fa-facebook-f"></i></div><span>Facebook</span></a>
+        <div class="share-item cp" onclick="copyShareLink()"><div class="share-item-icon"><i class="fas fa-link"></i></div><span>Copy Link</span></div>
+    </div>
+    <button class="share-cancel" onclick="closeShareModal()">Cancel</button>
+</div>
+
+<div id="toast">LINK COPIED!</div>
+<div class="sidebar-overlay" id="globalOverlay" onclick="closeAll()"></div>
+
+<!-- NOTIF -->
+<div id="notifModal">
+    <h4 style="color:var(--blue);font-family:'Orbitron',sans-serif;font-size:0.82rem;margin-bottom:12px;letter-spacing:1px;">RECENT ALERTS</h4>
+    <div id="notifList">
+        <div class="notif-item"><i class="fas fa-bolt" style="color:var(--green)"></i> WA Anti-Ban Updated!</div>
+        <div class="notif-item"><i class="fas fa-star" style="color:var(--blue)"></i> New iOS XML Added.</div>
+        <div class="notif-item"><i class="fas fa-check-circle" style="color:var(--blue)"></i> System All Good.</div>
+    </div>
+</div>
+
+<!-- SIDEBAR -->
+<nav class="sidebar" id="sidebar">
+    <div class="side-profile">
+        <img src="https://i.ibb.co/9mkRYT12/1773365624558.jpg" class="side-avatar-img">
+        <h2 style="font-family:'Orbitron',sans-serif;font-size:1.1rem;color:var(--blue);margin-top:16px;">MA LEGEND <i class="fas fa-check-circle verified-badge"></i></h2>
+        <p style="font-size:0.72rem;color:var(--subtext);font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-top:4px;">Master Developer</p>
+    </div>
+    <div class="sidebar-section">
+        <div class="status-header"><span>Device Status</span></div>
+        <div style="text-align:center;padding:10px;">
+            <i class="fas fa-mobile-alt" style="font-size:1.3rem;color:var(--blue);margin-bottom:7px;display:block;"></i>
+            <div id="deviceTag" style="font-family:'Orbitron',sans-serif;color:var(--blue);font-size:0.78rem;font-weight:800;">DETECTING...</div>
+            <div style="font-size:0.68rem;color:var(--subtext);margin-top:3px;font-weight:600;">System Optimized</div>
+        </div>
+    </div>
+    <div class="sidebar-section">
+        <div class="status-header"><span>Server Status</span><span>v4.0</span></div>
+        <div class="status-indicator"><div class="pulsing-dot"></div> FIREBASE LIVE</div>
+        <div style="margin-top:11px;font-size:0.82rem;color:var(--subtext);display:flex;align-items:center;gap:8px;font-weight:700;">
+            <i class="fas fa-users" style="color:var(--blue);"></i>
+            <span id="liveUserCnt" style="font-weight:900;color:var(--text);">420</span> ELITE USERS ONLINE
+        </div>
+    </div>
+    <div class="sidebar-section">
+        <div class="status-header"><span>Theme Color</span></div>
+        <div class="theme-options">
+            <div class="theme-circle" style="background:#00796b" onclick="setTheme('#00796b','#26a69a')"></div>
+            <div class="theme-circle" style="background:#00b894" onclick="setTheme('#00b894','#00cec9')"></div>
+            <div class="theme-circle" style="background:#e74c3c" onclick="setTheme('#e74c3c','#ff6b6b')"></div>
+            <div class="theme-circle" style="background:#9b59b6" onclick="setTheme('#9b59b6','#b07fd1')"></div>
+        </div>
+    </div>
+    <div class="side-links">
+        <a onclick="closeAll();playClick()"><i class="fas fa-home"></i> Home Dashboard</a>
+        <a onclick="showInfo('about');playClick()"><i class="fas fa-user-shield"></i> About Developer</a>
+        <a onclick="showInfo('contact');playClick()"><i class="fas fa-headset"></i> Contact Support</a>
+        <a onclick="showInfo('policy');playClick()"><i class="fas fa-file-contract"></i> Privacy Policy</a>
+        <div style="margin:18px 0;height:2px;background:var(--bg);box-shadow:var(--shadow-in);border-radius:5px;"></div>
+        <a href="https://whatsapp.com/channel/0029VarS46O3QxRtTZO0z60x" target="_blank"><i class="fab fa-whatsapp"></i> Join WA Channel</a>
+    </div>
+</nav>
+
+<!-- HEADER -->
+<header>
+    <button class="btn-nav-icon" onclick="toggleSidebar();playClick()"><i class="fas fa-bars-staggered"></i></button>
+    <div class="brand-logo"><h1>MA <span>LEGEND</span> <i class="fas fa-check-circle verified-badge"></i></h1></div>
+    <div style="display:flex;gap:11px;">
+        <button class="btn-nav-icon" onclick="toggleNotif();playClick()"><i class="fas fa-bell"></i><span class="notif-dot"></span></button>
+        <button class="btn-nav-icon" id="themeBtn" onclick="toggleDarkMode();playClick()"><i class="fas fa-moon"></i></button>
+    </div>
+</header>
+
+<!-- MARQUEE -->
+<div class="marquee">
+    <div class="marquee-inner">صَلَّى ٱللَّٰهُ عَلَيْهِ وَسَلَّمَ صَلَّى اللَّهُ عَلَى النَّبِيِّ مُحَمَّدٍ اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ كَمَا صَلَّيْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ إِنَّكَ حَمِيدٌ مَجِيدٌ</div>
+</div>
+
+<!-- TABS -->
+<div class="tabs">
+    <button class="tab-btn active" onclick="filterCat('whatsapp',this);playClick()">WA MODS</button>
+    <button class="tab-btn" onclick="filterCat('themes',this);playClick()">XML THEMES</button>
+    <button class="tab-btn" onclick="filterCat('apps',this);playClick()">APPS</button>
+    <button class="tab-btn" onclick="filterCat('tools',this);playClick()">VIP TOOLS</button>
+    <button class="tab-btn" onclick="filterCat('bancheck',this);playClick()">🛡️ BAN CHECK</button>
+    <button class="tab-btn" onclick="openReports();playClick()">📊 REPORTS</button>
+</div>
+
+<!-- SEARCH -->
+<div class="search-container">
+    <i class="fas fa-magnifying-glass" style="color:var(--blue)"></i>
+    <input type="text" id="search" placeholder="Search mods & features..." onkeyup="doSearch()">
+</div>
+
+<main class="grid" id="appGrid"></main>
+
+<!-- SPECS OVERLAY -->
+<div id="specsOverlay" class="overlay">
+    <div class="overlay-header">
+        <div class="btn-nav-icon" onclick="history.back();playClick()"><i class="fas fa-chevron-left"></i></div>
+        <span>SPECIFICATIONS</span>
+        <div style="width:50px;"></div>
+    </div>
+    <div class="overlay-body" id="specsContent"></div>
+</div>
+
+<!-- INFO OVERLAY -->
+<div id="infoOverlay" class="overlay">
+    <div class="overlay-header">
+        <div class="btn-nav-icon" onclick="history.back();playClick()"><i class="fas fa-chevron-left"></i></div>
+        <span id="infoTitle">VIP HUB</span>
+        <div style="width:50px;"></div>
+    </div>
+    <div class="overlay-body" id="infoContent"></div>
+</div>
+
+<!-- TIMER MODAL -->
+<div class="modal-view" id="timerModal">
+    <div class="modal-content">
+        <div class="timer-val" id="timerCount">10</div>
+        <h3>SECURING ELITE LINK...</h3>
+        <div class="logs" id="serverLogs"></div>
+        <a href="#" id="finalBtn" style="display:none;text-decoration:none;margin-top:20px;" target="_blank" class="btn-view">OPEN DOWNLOAD</a>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-logo">MA LEGEND <i class="fas fa-check-circle verified-badge"></i></div>
+    <div style="display:flex;justify-content:center;margin-bottom:28px;">
+        <a href="https://whatsapp.com/channel/0029VarS46O3QxRtTZO0z60x" target="_blank" class="footer-social-icon"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://t.me/LegendMode_banchack_whatsapp" target="_blank" class="footer-social-icon"><i class="fab fa-telegram-plane"></i></a>
+        <a href="https://www.youtube.com/@legendmod407" target="_blank" class="footer-social-icon"><i class="fab fa-youtube"></i></a>
+    </div>
+    <p id="footerCopy" style="font-size:0.83rem;color:var(--subtext);letter-spacing:2px;cursor:default;user-select:none;font-weight:700;">&copy; 2026 MA LEGEND ELITE STORE</p>
+</footer>
+
+<!-- ===== REPORTS OVERLAY ===== -->
+<div id="reportsOverlay" class="overlay" style="display:none;flex-direction:column;">
+    <div class="overlay-header">
+        <div class="btn-nav-icon" onclick="history.back();playClick()"><i class="fas fa-chevron-left"></i></div>
+        <span>📊 REPORTS</span>
+        <div style="width:50px;"></div>
+    </div>
+
+    <div class="reports-hero">
+        <h1>📊 REPORTS TOOL</h1>
+        <p>WhatsApp Channel & Account Report System</p>
+        <p style="margin-top:8px;font-size:0.78rem;opacity:0.8;">Admin se Pro Key lekar Pro version unlock karo</p>
+    </div>
+
+    <!-- Pro Status -->
+    <div id="proStatusBox" class="pro-status-box" style="display:none;">
+        <h4>✅ PRO UNLOCKED!</h4>
+        <p id="proStatusMsg" style="font-size:0.82rem;opacity:0.9;margin-top:4px;"></p>
+    </div>
+
+    <!-- Plans -->
+    <div class="plan-cards">
+        <div class="plan-card">
+            <div class="plan-badge-lbl">FREE</div>
+            <div class="plan-price">0 PKR</div>
+            <div class="plan-duration">Hamesha Free</div>
+            <ul class="plan-features-list">
+                <li><i class="fas fa-check"></i>Basic Report Tool</li>
+                <li><i class="fas fa-check"></i>Standard Speed</li>
+                <li style="color:var(--subtext);"><i class="fas fa-times" style="color:var(--red);"></i>Mass Report</li>
+            </ul>
+            <button class="btn-buy-plan btn-buy-free" onclick="playClick()">FREE USE KARO</button>
+        </div>
+        <div class="plan-card">
+            <div class="plan-badge-lbl" style="color:var(--blue);">PRO ⭐</div>
+            <div style="margin-bottom:4px;"><span style="font-size:0.75rem;color:var(--subtext);font-weight:700;">Weekly: </span><span style="font-family:'Orbitron',sans-serif;font-size:1.1rem;color:var(--blue);font-weight:900;">200 PKR</span></div>
+            <div><span style="font-size:0.75rem;color:var(--subtext);font-weight:700;">Monthly: </span><span style="font-family:'Orbitron',sans-serif;font-size:1.1rem;color:var(--blue);font-weight:900;">500 PKR</span></div>
+            <div class="plan-duration">Admin se key lo</div>
+            <ul class="plan-features-list">
+                <li><i class="fas fa-check"></i>All Pro Tools</li>
+                <li><i class="fas fa-check"></i>Ultra Fast Speed</li>
+                <li><i class="fas fa-check"></i>Unlimited Reports</li>
+            </ul>
+            <button class="btn-buy-plan btn-buy-pro" onclick="showKeyUnlock();playClick()">🔑 KEY SE UNLOCK</button>
+        </div>
+    </div>
+
+    <!-- Key Unlock -->
+    <div class="key-unlock-section" id="keyUnlockSection" style="display:none;">
+        <h3><i class="fas fa-key"></i> PRO KEY ENTER KARO</h3>
+        <div class="key-input-row">
+            <input type="text" class="key-input" id="proKeyInput" placeholder="e.g. W-MALG-XXXX-XXXX-XXXX">
+            <button class="btn-unlock" onclick="verifyProKey();playClick()">UNLOCK</button>
+        </div>
+        <p style="font-size:0.75rem;color:var(--subtext);margin-top:10px;font-weight:600;">Key admin se WhatsApp ya Telegram par lein</p>
+    </div>
+
+    <!-- FREE TOOLS from Firebase -->
+    <div class="report-tools-section" style="margin-top:8px;">
+        <h3><span class="section-badge">FREE</span> FREE REPORT TOOLS</h3>
+        <div id="freeToolsList"><div class="tools-loading"><i class="fas fa-spinner fa-spin"></i> Loading...</div></div>
+    </div>
+
+    <!-- PRO TOOLS from Firebase -->
+    <div class="report-tools-section">
+        <h3><span class="section-badge">PRO</span> PRO REPORT TOOLS</h3>
+        <div id="proToolsList"><div class="tools-loading"><i class="fas fa-spinner fa-spin"></i> Loading...</div></div>
+    </div>
+
+    <!-- Contact -->
+    <div class="reports-contact">
+        <h3>📲 PRO KEY KAISE LEIN?</h3>
+        <a class="report-contact-btn wa" href="https://wa.me/923277796795" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+            <div><div>WhatsApp Par Contact Karo</div><small>+923277796795 • Fast Response</small></div>
+        </a>
+        <a class="report-contact-btn tg" href="https://t.me/Top_3x_Legend" target="_blank">
+            <i class="fab fa-telegram-plane"></i>
+            <div><div>Telegram Par Contact Karo</div><small>@Top_3x_Legend • 24/7 Available</small></div>
+        </a>
+        <div style="background:var(--bg);border-radius:16px;padding:16px;box-shadow:var(--shadow-in);margin-top:10px;">
+            <p style="font-size:0.82rem;font-weight:800;color:var(--text);margin-bottom:8px;">💰 Pricing:</p>
+            <p style="font-size:0.82rem;font-weight:700;color:var(--blue);">⏱ Weekly: 200 PKR (7 Din)</p>
+            <p style="font-size:0.82rem;font-weight:700;color:var(--blue);margin-top:4px;">📅 Monthly: 500 PKR (30 Din)</p>
+        </div>
+    </div>
+</div>
+
+<!-- ADMIN PANEL (inline) -->
+<div id="adminPanel">
+    <div class="admin-header">
+        <h2 style="font-family:'Orbitron',sans-serif;color:var(--blue);font-size:0.95rem;">⚙️ ADMIN PANEL</h2>
+        <div style="display:flex;gap:9px;align-items:center;">
+            <span style="font-size:0.78rem;color:var(--subtext);font-weight:700;">Apps: <span id="adminAppCount" style="color:var(--blue);font-weight:900;">0</span></span>
+            <button class="btn-nav-icon" onclick="document.getElementById('adminPanel').style.display='none'"><i class="fas fa-times"></i></button>
+        </div>
+    </div>
+    <div class="admin-body">
+        <div class="admin-stats">
+            <div class="stat-box"><div class="num" id="statTotal">0</div><div class="lbl">Total</div></div>
+            <div class="stat-box"><div class="num" id="statWA">0</div><div class="lbl">WA Mods</div></div>
+            <div class="stat-box"><div class="num" id="statApps">0</div><div class="lbl">Apps</div></div>
+            <div class="stat-box"><div class="num" id="statTools">0</div><div class="lbl">Tools</div></div>
+        </div>
+        <div class="admin-card">
+            <h3 id="formTitle"><i class="fas fa-plus"></i> ADD NEW APP</h3>
+            <input type="hidden" id="editId">
+            <div class="form-row">
+                <div class="form-group"><label>App Name *</label><input type="text" id="fName" class="form-input" placeholder="e.g. WhatsApp Gold"></div>
+                <div class="form-group"><label>Version *</label><input type="text" id="fVersion" class="form-input" placeholder="e.g. v2.26.1"></div>
+            </div>
+            <div class="form-row">
+                <div class="form-group"><label>Category *</label>
+                    <select id="fCategory" class="form-input">
+                        <option value="whatsapp">WhatsApp Mods</option>
+                        <option value="apps">Apps</option>
+                        <option value="tools">VIP Tools</option>
+                        <option value="themes">XML Themes</option>
+                        <option value="bancheck">Ban Check</option>
+                    </select>
+                </div>
+                <div class="form-group"><label>File Size</label><input type="text" id="fSize" class="form-input" placeholder="e.g. 65 MB"></div>
+            </div>
+            <div class="form-group"><label>Icon URL *</label><input type="text" id="fIcon" class="form-input" placeholder="https://..." oninput="previewIcon(this.value)"><div id="iconPreview"><img id="iconPreviewImg" src="" alt="Preview"></div></div>
+            <div class="form-group"><label>Download Link *</label><input type="text" id="fLink" class="form-input" placeholder="https://..."></div>
+            <div class="form-group"><label>YouTube Video (optional)</label><input type="text" id="fVideo" class="form-input" placeholder="https://youtu.be/..."></div>
+            <div class="form-group"><label>Screenshots (one URL per line)</label><textarea id="fScreens" class="form-input" rows="3" placeholder="https://..."></textarea></div>
+            <div class="form-group"><label>Features (one per line)</label><textarea id="fFeatures" class="form-input" rows="4" placeholder="Feature 1&#10;Feature 2"></textarea></div>
+            <div class="form-group"><label>Changelog (one per line)</label><textarea id="fChangelog" class="form-input" rows="3" placeholder="Bug fix&#10;New feature"></textarea></div>
+            <div style="display:flex;gap:13px;flex-wrap:wrap;">
+                <button class="btn-admin btn-gold" onclick="saveApp()"><i class="fas fa-save"></i> <span id="saveBtnText">SAVE APP</span></button>
+                <button class="btn-admin btn-danger" onclick="resetForm()"><i class="fas fa-times"></i> RESET</button>
+            </div>
+        </div>
+        <div class="admin-card">
+            <h3><i class="fas fa-list"></i> ALL APPS <span class="badge-count" id="statBan">0</span></h3>
+            <div class="tab-row">
+                <button class="tab-btn active" onclick="filterAdminList('all',this)">All</button>
+                <button class="tab-btn" onclick="filterAdminList('whatsapp',this)">WA</button>
+                <button class="tab-btn" onclick="filterAdminList('apps',this)">Apps</button>
+                <button class="tab-btn" onclick="filterAdminList('tools',this)">Tools</button>
+                <button class="tab-btn" onclick="filterAdminList('themes',this)">Themes</button>
+            </div>
+            <div class="apps-list-admin" id="adminAppsList"></div>
+        </div>
+        <div class="admin-card">
+            <h3><i class="fas fa-sliders"></i> SITE SETTINGS</h3>
+            <div class="form-group"><label>Accent Color</label>
+                <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px;">
+                    <div style="width:36px;height:36px;border-radius:50%;background:#00796b;cursor:pointer;box-shadow:var(--shadow-out);border:3px solid #fff;" onclick="saveSetting('color','#00796b');showToast('✅ Color Saved!');"></div>
+                    <div style="width:36px;height:36px;border-radius:50%;background:#c62828;cursor:pointer;box-shadow:var(--shadow-out);border:3px solid #fff;" onclick="saveSetting('color','#c62828');showToast('✅ Color Saved!');"></div>
+                    <div style="width:36px;height:36px;border-radius:50%;background:#6a1b9a;cursor:pointer;box-shadow:var(--shadow-out);border:3px solid #fff;" onclick="saveSetting('color','#6a1b9a');showToast('✅ Color Saved!');"></div>
+                    <div style="width:36px;height:36px;border-radius:50%;background:#e65100;cursor:pointer;box-shadow:var(--shadow-out);border:3px solid #fff;" onclick="saveSetting('color','#e65100');showToast('✅ Color Saved!');"></div>
+                </div>
+            </div>
+            <div class="form-group"><label>Sound Effects</label>
+                <div style="display:flex;gap:10px;margin-top:8px;">
+                    <button class="btn-admin btn-gold" style="flex:1;" onclick="saveSetting('sound',true);showToast('🔊 Sound ON');">🔊 ON</button>
+                    <button class="btn-admin btn-danger" style="flex:1;" onclick="saveSetting('sound',false);showToast('🔇 Sound OFF');">🔇 OFF</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- FIREBASE -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getDatabase, ref, set, get, remove, onValue, push } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+const app = initializeApp({ databaseURL: "https://my-store-a63af-default-rtdb.firebaseio.com/" });
+const db = getDatabase(app);
+
+async function loadSiteSettings(){
+    try{
+        const snap=await get(ref(db,'siteSettings'));
+        if(!snap.exists())return;
+        const s=snap.val();
+        if(s.color){document.documentElement.style.setProperty('--blue',s.color);}
+        if(s.sound!==undefined)window.soundEnabled=s.sound;
+        var mq=document.querySelector('.marquee');
+        if(mq)mq.style.display=(s.marquee===false)?'none':'';
+    }catch(e){}
+}
+
+const AK="apps";
+const defaults=[
+    {id:1,name:"WhatsApp Fake Chat",category:"whatsapp",version:"v2.26.2.70",size:"74 MB",uploadDate:"2026-02-06T06:44:00",icon:"https://i.postimg.cc/ZvP3dbqc/f3f89c778d3784fd3a51d8bd32eb3e33.jpg",link:"https://www.mediafire.com/file/cy3jt1kvmgg7cjk/WhatsApp_2.26.2.70.apk/file",screens:["https://i.postimg.cc/ZvP3dbqc/f3f89c778d3784fd3a51d8bd32eb3e33.jpg"],features:["Fake Profile Creator","Custom Chats","Ghost Mode","Fast Media"],changelog:["Base 2.26.2.70 Fixed","Improved Fake Call UI"],video:""},
+    {id:2,name:"WhatsApp Business",category:"whatsapp",version:"v2.26.1.76",size:"65 MB",uploadDate:"2026-02-01T12:00:00",icon:"https://i.postimg.cc/SYY94wTH/20260101-082111.jpg",link:"https://www.mediafire.com/file/cnvg9ixzj8romr6/WhatsApp_Business_2.26.1.76.apk/file",screens:["https://i.postimg.cc/SYY94wTH/20260101-082111.jpg"],features:["Anti-Ban Logic","Auto-Translate","Fast Backup","Stealth Status"],changelog:["Upgraded Bypass Engine 2026"],video:""},
+    {id:4,name:"APK Editor Pro",category:"apps",version:"v3.0 VIP",size:"15 MB",uploadDate:"2026-01-30T09:00:00",icon:"https://i.postimg.cc/xNMWpCLr/20260127-133717.jpg",link:"https://www.mediafire.com/file/vwipkb6p0kh4ogr/APK_Editor_Mod_3.0.apk/file/",screens:["https://i.postimg.cc/xNMWpCLr/20260127-133717.jpg"],features:["Dex Editor Plus","XML Manifest Mod","No Ads"],changelog:["Android 14 Support"],video:""},
+    {id:6,name:"WA Channel Report",category:"tools",version:"v1.1 Cloud",size:"Online",uploadDate:"2026-01-28T14:07:00",icon:"https://i.postimg.cc/xNMWpCLr/20260127-133717.jpg",link:"https://whatsapp-channel-report.vercel.app/",screens:["https://i.postimg.cc/xNMWpCLr/20260127-133717.jpg"],features:["Mass Proxy Report","Fast Takedown"],changelog:["Updated Token pool"],video:""},
+    {id:8,name:"iOS 18 Dark XML",category:"themes",version:"XML File",size:"150 KB",uploadDate:"2026-02-15T10:00:00",icon:"https://i.postimg.cc/xNMWpCLr/20260127-133717.jpg",link:"#",screens:["https://i.postimg.cc/xNMWpCLr/20260127-133717.jpg"],features:["Real iOS Fonts","Blur Effect","Dark Mode"],changelog:["Fixed Bubble Colors"],video:""}
+];
+
+async function loadApps(){
+    window.appsData = defaults.map((a,i)=>({firebaseKey:'local_'+i,...a}));
+    window.appsData.sort((a,b)=>new Date(b.uploadDate)-new Date(a.uploadDate));
+    const waDefault = window.appsData.filter(a=>a.category==='whatsapp');
+    renderApps(waDefault.length>0?waDefault:window.appsData);
+    updateAdminStats(); renderAdminList('all');
+    try{
+        const snap=await get(ref(db,AK));
+        const data=snap.val();
+        if(data&&Object.keys(data).length>0){
+            window.appsData=Object.keys(data).map(k=>({firebaseKey:k,...data[k]}));
+        }else{
+            window.appsData=[];
+            const sp=defaults.map(async(a)=>{const nr=push(ref(db,AK));await set(nr,a);window.appsData.push({firebaseKey:nr.key,...a});});
+            await Promise.all(sp);
+        }
+    }catch(e){window.appsData=defaults.map((a,i)=>({firebaseKey:'local_'+i,...a}));}
+    window.appsData.sort((a,b)=>new Date(b.uploadDate)-new Date(a.uploadDate));
+    const wa=window.appsData.filter(a=>a.category==='whatsapp');
+    renderApps(wa.length>0?wa:window.appsData);
+    updateAdminStats();renderAdminList('all');loadSiteSettings();
+    onValue(ref(db,AK),(snap)=>{
+        const d=snap.val();if(!d)return;
+        window.appsData=Object.keys(d).map(k=>({firebaseKey:k,...d[k]}));
+        window.appsData.sort((a,b)=>new Date(b.uploadDate)-new Date(a.uploadDate));
+        updateAdminStats();renderAdminList('all');
+        const at=document.querySelector('.tabs .tab-btn.active');if(at)at.click();
+    });
+}
+loadApps();
+
+// ===== REPORT TOOLS FIREBASE LOADER =====
+const iconMap = {
+    'basic':   {bg:'linear-gradient(135deg,#00796b,#26a69a)', icon:'fa-flag'},
+    'mass':    {bg:'linear-gradient(135deg,#e74c3c,#c0392b)', icon:'fa-bolt'},
+    'channel': {bg:'linear-gradient(135deg,#9b59b6,#6c3483)', icon:'fa-satellite-dish'},
+    'spam':    {bg:'linear-gradient(135deg,#e67e22,#d35400)', icon:'fa-envelope'},
+    'default': {bg:'linear-gradient(135deg,#00796b,#26a69a)', icon:'fa-tools'}
+};
+function getIcon(t){
+    const k = t ? t.toLowerCase() : 'default';
+    for(const key in iconMap){ if(k.includes(key)) return iconMap[key]; }
+    return iconMap['default'];
+}
+
+function renderToolCard(tool, isFree){
+    const ic = getIcon(tool.toolType || tool.name || '');
+    const lockId = 'lock_'+tool.firebaseKey;
+    const lockHtml = isFree
+        ? '<span class="pro-lock"><i class="fas fa-lock-open"></i> FREE</span>'
+        : '<span class="pro-lock" id="'+lockId+'"><i class="fas fa-lock"></i> PRO</span>';
+    const btnOnclick = isFree
+        ? 'openReportTool("'+tool.firebaseKey+'","'+(tool.url||'#')+'")'
+        : 'checkProAndUseTool("'+tool.firebaseKey+'","'+(tool.url||'#')+'")';
+    return '<div class="report-tool-card">'
+        +'<div class="tool-icon" style="background:'+ic.bg+'"><i class="fas '+ic.icon+'"></i></div>'
+        +'<div class="tool-info" style="flex:1;">'
+        +'<h4>'+tool.name+'</h4>'
+        +'<p>'+(tool.description||'Report Tool')+'</p>'
+        +'<div style="display:flex;gap:8px;margin-top:8px;align-items:center;">'
+        +lockHtml
+        +'<button class="btn-report-use" onclick="'+btnOnclick+';playClick()">USE NOW</button>'
+        +'</div></div></div>';
+}
+
+onValue(ref(db,'reportTools'), (snap) => {
+    const data = snap.val();
+    const freeEl = document.getElementById('freeToolsList');
+    const proEl = document.getElementById('proToolsList');
+    if(!freeEl || !proEl) return;
+    if(!data){
+        freeEl.innerHTML = '<div class="tools-loading">Koi free tool nahi hai abhi</div>';
+        proEl.innerHTML = '<div class="tools-loading">Koi pro tool nahi hai abhi</div>';
+        return;
+    }
+    const tools = Object.keys(data).map(k=>({firebaseKey:k,...data[k]}));
+    const freeTools = tools.filter(t=>t.type==='free');
+    const proTools = tools.filter(t=>t.type==='pro');
+    freeEl.innerHTML = freeTools.length ? freeTools.map(t=>renderToolCard(t,true)).join('') : '<div class="tools-loading">Koi free tool nahi hai abhi</div>';
+    proEl.innerHTML = proTools.length ? proTools.map(t=>renderToolCard(t,false)).join('') : '<div class="tools-loading">Koi pro tool nahi hai abhi</div>';
+    if(window._isProUser) updateProBadges(proTools);
+});
+
+function updateProBadges(proTools){
+    proTools.forEach(t=>{
+        const el=document.getElementById('lock_'+t.firebaseKey);
+        if(el){el.innerHTML='<i class="fas fa-lock-open"></i> PRO';el.classList.add('unlocked');}
+    });
+}
+window._updateProBadges = updateProBadges;
+
+window.saveSetting = async function(key,val){
+    try{
+        const sRef=ref(db,'siteSettings');
+        const snap=await get(sRef);
+        const current=snap.exists()?snap.val():{};
+        current[key]=val;
+        await set(sRef,current);
+        if(key==='color')document.documentElement.style.setProperty('--blue',val);
+        if(key==='marquee'){var mq=document.querySelector('.marquee');if(mq)mq.style.display=val?'':'none';}
+        if(key==='sound')window.soundEnabled=val;
+    }catch(e){showToast('❌ Error saving!');}
+};
+
+window.saveApp=async function(){
+    const name=document.getElementById('fName').value.trim(),version=document.getElementById('fVersion').value.trim(),category=document.getElementById('fCategory').value,size=document.getElementById('fSize').value.trim()||'N/A',icon=document.getElementById('fIcon').value.trim(),link=document.getElementById('fLink').value.trim(),video=document.getElementById('fVideo').value.trim(),screens=document.getElementById('fScreens').value.trim().split('\n').filter(s=>s.trim()),features=document.getElementById('fFeatures').value.trim().split('\n').filter(f=>f.trim()),changelog=document.getElementById('fChangelog').value.trim().split('\n').filter(c=>c.trim()),editId=document.getElementById('editId').value;
+    if(!name||!version||!icon||!link){showToast('⚠️ Fill required fields!');return;}
+    const appData={id:Date.now(),name,version,category,size,icon,link,video,screens:screens.length?screens:[icon],features:features.length?features:['Premium Features'],changelog:changelog.length?changelog:['Latest Update'],uploadDate:new Date().toISOString()};
+    try{
+        if(editId){await set(ref(db,`${AK}/${editId}`),appData);showToast('✅ App Updated!');}
+        else{const nr=push(ref(db,AK));await set(nr,appData);showToast('✅ App Added!');}
+        resetForm();
+    }catch(e){showToast('❌ Firebase Error!');}
+};
+window.deleteApp=async function(fk,nm){if(!confirm('Delete "'+nm+'"?'))return;try{await remove(ref(db,`${AK}/${fk}`));showToast('🗑️ Deleted!');}catch(e){showToast('❌ Error!');}};
+window.editApp=function(fk){
+    const a=window.appsData.find(x=>x.firebaseKey===fk);if(!a)return;
+    document.getElementById('editId').value=fk;
+    document.getElementById('fName').value=a.name||'';
+    document.getElementById('fVersion').value=a.version||'';
+    document.getElementById('fCategory').value=a.category||'whatsapp';
+    document.getElementById('fSize').value=a.size||'';
+    document.getElementById('fIcon').value=a.icon||'';
+    document.getElementById('fLink').value=a.link||'';
+    document.getElementById('fVideo').value=a.video||'';
+    document.getElementById('fScreens').value=(a.screens||[]).join('\n');
+    document.getElementById('fFeatures').value=(a.features||[]).join('\n');
+    document.getElementById('fChangelog').value=(a.changelog||[]).join('\n');
+    document.getElementById('formTitle').innerText='EDIT APP';
+    document.getElementById('saveBtnText').innerText='UPDATE APP';
+    if(a.icon){document.getElementById('iconPreviewImg').src=a.icon;document.getElementById('iconPreview').style.display='block';}
+    document.querySelector('.admin-card').scrollIntoView({behavior:'smooth'});
+};
+</script>
+
+<script>
+window.appsData=window.appsData||[];window.soundEnabled=true;window._isProUser=false;window._proExpiry=null;
+var audioCtx;
+function initAudio(){if(!audioCtx)audioCtx=new(window.AudioContext||window.webkitAudioContext)();if(audioCtx.state==='suspended')audioCtx.resume();}
+window.addEventListener('click',function(){initAudio();},{once:true});
+window.addEventListener('touchstart',function(){initAudio();},{once:true});
+function playClick(){if(!window.soundEnabled)return;try{if(!audioCtx)initAudio();var o=audioCtx.createOscillator(),g=audioCtx.createGain();o.connect(g);g.connect(audioCtx.destination);o.frequency.value=700;o.type='sine';g.gain.setValueAtTime(0.07,audioCtx.currentTime);g.gain.exponentialRampToValueAtTime(0.001,audioCtx.currentTime+0.08);o.start();o.stop(audioCtx.currentTime+0.08);}catch(e){}}
+setTimeout(function(){var s=document.getElementById('splash-screen');if(s){s.classList.add('hidden');setTimeout(function(){if(s.parentNode)s.parentNode.removeChild(s);},400);}},3000);
+window.addEventListener('load',function(){
+    var os='Unknown';if(navigator.userAgent.indexOf('Android')>-1)os='Android Elite';if(navigator.userAgent.indexOf('iPhone')>-1)os='iOS Secure';if(navigator.userAgent.indexOf('Windows')>-1)os='PC Master';
+    document.getElementById('deviceTag').innerText='DETECTED: '+os;
+    var urlParams=new URLSearchParams(window.location.search),deepAppId=urlParams.get('app');
+    if(deepAppId){var tries=0,tryOpen=setInterval(function(){tries++;var a=window.appsData&&window.appsData.find(function(x){return x.firebaseKey===deepAppId||String(x.id)===String(deepAppId);});if(a){clearInterval(tryOpen);setTimeout(function(){openDetails(deepAppId);},600);}if(tries>20){clearInterval(tryOpen);}},500);}
+});
+setInterval(function(){var c=document.getElementById('liveUserCnt');if(c)c.innerText=Math.max(100,parseInt(c.innerText)+(Math.floor(Math.random()*10)-5));},3000);
+function getTimeAgo(d){var now=new Date(),past=new Date(d),diff=Math.floor((now-past)/1000);if(diff<0)diff=0;if(diff<60)return'Just now';var m=Math.floor(diff/60);if(m<60)return m+'m ago';var h=Math.floor(m/60);if(h<24)return h+'h ago';return Math.floor(h/24)+'d ago';}
+function showToast(msg){var t=document.getElementById('toast');t.style.display='block';t.innerText=msg;setTimeout(function(){t.style.display='none';},2500);}
+function previewIcon(url){if(url){document.getElementById('iconPreviewImg').src=url;document.getElementById('iconPreview').style.display='block';}}
+function renderApps(data){
+    var g=document.getElementById('appGrid');if(!g)return;
+    if(!data||!data.length){g.innerHTML='<div class="empty-state" style="grid-column:1/-1"><i class="fas fa-inbox"></i><p style="font-weight:700;">No apps in this category</p></div>';return;}
+    g.innerHTML='';
+    data.forEach(function(app,idx){
+        var aid=(app.firebaseKey||app.id),delay=(idx*0.07)+'s';
+        g.innerHTML+='<div class="card" style="animation-delay:'+delay+'"><div class="vip-tag">VIP ELITE</div><div class="card-head"><img src="'+app.icon+'" loading="lazy" onerror="this.src=\'https://i.postimg.cc/SYY94wTH/20260101-082111.jpg\'"><div><h3>'+app.name+'</h3><div class="time-badge"><i class="fas fa-clock"></i> '+getTimeAgo(app.uploadDate)+'</div><div class="stars">★★★★★ <span>(Verified)</span></div></div></div><div class="card-actions"><div class="btn-view" onclick="openDetails(\''+aid+'\');playClick()">SPECIFICATIONS</div><div class="btn-share" onclick="openShareModal(\''+aid+'\',\''+app.name.replace(/'/g,"\\'").replace(/"/g,"&quot;")+'\');playClick()"><i class="fas fa-share-nodes"></i></div></div></div>';
+    });
+}
+function filterCat(c,b){document.querySelectorAll('.tabs .tab-btn').forEach(function(x){x.classList.remove('active');});if(b)b.classList.add('active');renderApps(window.appsData.filter(function(a){return a.category===c;}));}
+function doSearch(){var q=document.getElementById('search').value.toLowerCase();renderApps(window.appsData.filter(function(a){return a.name.toLowerCase().indexOf(q)>-1||(a.features||[]).some(function(f){return f.toLowerCase().indexOf(q)>-1;});}));}
+function openDetails(id){
+    var a=window.appsData.find(function(x){return x.firebaseKey===id||String(x.id)===String(id);});if(!a)return;
+    var vid='';if(a.video){var ytLink=a.video;if(ytLink.includes('youtu.be/')){ytLink='https://www.youtube.com/watch?v='+ytLink.split('youtu.be/')[1].split('?')[0];}else if(!ytLink.includes('http')){ytLink='https://www.youtube.com/watch?v='+ytLink;}vid='<a href="'+ytLink+'" target="_blank" class="btn-watch-video"><i class="fab fa-youtube"></i> WATCH VIDEO</a>';}
+    document.getElementById('specsContent').innerHTML=
+        '<div style="text-align:center;margin-bottom:26px;"><img src="'+a.icon+'" style="width:105px;border-radius:28px;box-shadow:var(--shadow-out);" onerror="this.src=\'https://i.postimg.cc/SYY94wTH/20260101-082111.jpg\'"><h2 style="margin-top:16px;font-family:\'Orbitron\',sans-serif;color:var(--blue);font-size:1.05rem;">'+a.name+' <i class="fas fa-check-circle verified-badge"></i></h2><p style="font-weight:800;color:var(--subtext);letter-spacing:1px;margin-top:7px;font-size:0.88rem;">VERSION: '+a.version+'</p></div>'+vid+
+        '<div class="slider">'+(a.screens||[a.icon]).map(function(s){return'<img src="'+s+'">';}).join('')+'</div>'+
+        '<div class="stats-grid"><div class="stat-item"><label>FILE SIZE</label><value>'+a.size+'</value></div><div class="stat-item"><label>STATUS</label><value style="color:var(--green)">STABLE</value></div><div class="stat-item"><label>SYSTEM</label><value>Android 6+</value></div><div class="stat-item"><label>AUTHOR</label><value>MA Legend</value></div></div>'+
+        '<div class="vip-info-panel"><h3><i class="fas fa-star"></i> FEATURES</h3><ul style="list-style:none;display:flex;flex-direction:column;gap:9px;">'+(a.features||[]).map(function(f){return'<li style="color:var(--text);display:flex;gap:10px;font-weight:700;"><i class="fas fa-check" style="color:var(--green);margin-top:2px;flex-shrink:0;"></i>'+f+'</li>';}).join('')+'</ul></div>'+
+        '<div class="vip-info-panel"><h3><i class="fas fa-rocket"></i> WHAT\'S NEW</h3><p style="color:var(--subtext);line-height:1.9;font-weight:600;">'+(a.changelog||[]).join('<br>')+'</p></div>'+
+        '<div class="safe-badge"><i class="fas fa-shield-virus"></i> Scanned by VirusTotal — 100% Clean</div>'+
+        '<div class="btn-view" style="padding:19px;font-size:1.1rem;margin-top:4px;text-align:center;" onclick="startTimer(\''+a.link+'\');playClick()">⬇ EXECUTE DOWNLOAD</div>';
+    document.getElementById('specsOverlay').style.display='flex';document.body.style.overflow='hidden';history.pushState({v:'specs'},'');
+}
+function updateAdminStats(){var all=window.appsData;document.getElementById('statTotal').innerText=all.length;document.getElementById('statWA').innerText=all.filter(function(a){return a.category==='whatsapp';}).length;document.getElementById('statApps').innerText=all.filter(function(a){return a.category==='apps';}).length;document.getElementById('statTools').innerText=all.filter(function(a){return a.category==='tools';}).length;if(document.getElementById('statBan'))document.getElementById('statBan').innerText=all.filter(function(a){return a.category==='bancheck';}).length;document.getElementById('adminAppCount').innerText=all.length;}
+function renderAdminList(filter){var list=document.getElementById('adminAppsList'),data=filter==='all'?window.appsData:window.appsData.filter(function(a){return a.category===filter;});if(!data.length){list.innerHTML='<div class="empty-state"><i class="fas fa-inbox"></i><p style="font-weight:700;">No apps found</p></div>';return;}list.innerHTML=data.map(function(app){return'<div class="app-item-admin"><img src="'+app.icon+'" onerror="this.src=\'https://i.postimg.cc/SYY94wTH/20260101-082111.jpg\'"><div class="app-info"><h4>'+app.name+'</h4><p>'+app.version+' • '+app.category+' • '+app.size+'</p></div><div class="app-actions"><button class="btn-icon btn-edit" onclick="editApp(\''+app.firebaseKey+'\')"><i class="fas fa-pen"></i></button><button class="btn-icon btn-del" onclick="deleteApp(\''+app.firebaseKey+'\',\''+app.name.replace(/'/g,"\\'")+'\')"><i class="fas fa-trash"></i></button></div></div>';}).join('');}
+function filterAdminList(f,b){document.querySelectorAll('.tab-row .tab-btn').forEach(function(x){x.classList.remove('active');});if(b)b.classList.add('active');renderAdminList(f);}
+function resetForm(){document.getElementById('editId').value='';document.getElementById('fName').value='';document.getElementById('fVersion').value='';document.getElementById('fCategory').value='whatsapp';document.getElementById('fSize').value='';document.getElementById('fIcon').value='';document.getElementById('fLink').value='';document.getElementById('fVideo').value='';document.getElementById('fScreens').value='';document.getElementById('fFeatures').value='';document.getElementById('fChangelog').value='';document.getElementById('formTitle').innerText='ADD NEW APP';document.getElementById('saveBtnText').innerText='SAVE APP';document.getElementById('iconPreview').style.display='none';}
+function showInfo(type){
+    var content=document.getElementById('infoContent'),title=document.getElementById('infoTitle');
+    if(type==='about'){title.innerText='Developer Profile';content.innerHTML='<div class="vip-info-panel" style="text-align:center;"><img src="https://i.ibb.co/9mkRYT12/1773365624558.jpg" style="width:105px;border-radius:50%;border:4px solid var(--bg);padding:4px;margin-bottom:16px;box-shadow:var(--shadow-out);"><h2 style="font-family:\'Orbitron\',sans-serif;color:var(--blue);letter-spacing:2px;font-size:1.05rem;">MA LEGEND <i class="fas fa-check-circle verified-badge"></i></h2><p style="color:var(--green);font-weight:900;font-size:0.75rem;letter-spacing:3px;margin-bottom:13px;">✓ VERIFIED DEVELOPER</p><p style="color:var(--subtext);line-height:1.8;font-weight:600;">Pakistan\'s premier Android modding authority.</p></div><div class="vip-info-panel"><h3><i class="fas fa-code"></i> SKILL MATRIX</h3><div class="skill-row"><div class="skill-info"><span>Anti-Ban Logic</span><span>100%</span></div><div class="progress-bar"><div class="progress-fill" style="width:100%"></div></div></div><div class="skill-row"><div class="skill-info"><span>Modding</span><span>95%</span></div><div class="progress-bar"><div class="progress-fill" style="width:95%"></div></div></div></div>';}
+    else if(type==='contact'){title.innerText='Support Hub';content.innerHTML='<div class="vip-info-panel"><h3><i class="fas fa-headset"></i> ELITE SUPPORT</h3><a href="https://whatsapp.com/channel/0029VarS46O3QxRtTZO0z60x" target="_blank" class="contact-vip-item wa"><i class="fab fa-whatsapp"></i><div><h4>WhatsApp VIP</h4><span>Join Official Channel</span></div></a><a href="https://t.me/LegendMode_banchack_whatsapp" target="_blank" class="contact-vip-item tg"><i class="fab fa-telegram-plane"></i><div><h4>Telegram Elite</h4><span>Fastest Mod Updates</span></div></a><a href="https://www.youtube.com/@legendmod407" target="_blank" class="contact-vip-item yt"><i class="fab fa-youtube"></i><div><h4>YouTube Channel</h4><span>Tutorials & Proofs</span></div></a></div>';}
+    else if(type==='policy'){title.innerText='Privacy Protocol';content.innerHTML='<div class="vip-info-panel"><h3><i class="fas fa-shield-halved"></i> DATA SECURITY</h3><ul class="policy-list" style="list-style:none;"><li><i class="fas fa-check"></i><div><strong>Zero Logs:</strong> We do not store any user data.</div></li><li><i class="fas fa-check"></i><div><strong>Safe Links:</strong> All downloads are scanned.</div></li></ul></div>';}
+    document.getElementById('infoOverlay').style.display='flex';document.body.style.overflow='hidden';history.pushState({v:'info'},'');
+    document.getElementById('sidebar').classList.remove('active');document.getElementById('globalOverlay').classList.remove('active');
+}
+function startTimer(link){
+    var m=document.getElementById('timerModal');m.style.display='flex';
+    var log=document.getElementById('serverLogs'),btn=document.getElementById('finalBtn'),count=document.getElementById('timerCount');
+    btn.style.display='none';count.style.display='block';log.innerHTML='> Connecting to Database...';
+    var time=10,t=setInterval(function(){time--;count.innerText=time;if(time===8)log.innerHTML+='<br>> Establishing Secure Handshake...';if(time===5)log.innerHTML+='<br>> Decrypting Download Token...';if(time===1)log.innerHTML+='<br>> ELITE LINK SECURED! ✓';if(time<=0){clearInterval(t);count.style.display='none';btn.style.display='block';btn.href=link;btn.onclick=function(){m.style.display='none';history.back();};}},1000);
+}
+var currentShareUrl='';
+function openShareModal(appId,appName){var baseUrl=window.location.href.split('?')[0].split('#')[0];currentShareUrl=appId?baseUrl+'?app='+appId:baseUrl;var title=appName?'🔥 '+appName+' - MA LEGEND VIP Store':'MA LEGEND VIP Store';var msg=encodeURIComponent(title+'\n'+currentShareUrl);document.getElementById('shareWA').href='https://wa.me/?text='+msg;document.getElementById('shareTG').href='https://t.me/share/url?url='+encodeURIComponent(currentShareUrl)+'&text='+encodeURIComponent(title);document.getElementById('shareFB').href='https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(currentShareUrl);document.getElementById('shareModal').classList.add('active');document.getElementById('shareBackdrop').classList.add('active');document.body.style.overflow='hidden';}
+function closeShareModal(){document.getElementById('shareModal').classList.remove('active');document.getElementById('shareBackdrop').classList.remove('active');document.body.style.overflow='auto';}
+function copyShareLink(){navigator.clipboard.writeText(currentShareUrl).then(function(){showToast('🔗 LINK COPIED!');}).catch(function(){});closeShareModal();}
+function toggleSidebar(){document.getElementById('sidebar').classList.toggle('active');document.getElementById('globalOverlay').classList.toggle('active');if(document.getElementById('sidebar').classList.contains('active'))history.pushState({v:'side'},'');}
+function toggleDarkMode(){var isDark=document.body.getAttribute('data-theme')==='dark';if(!isDark){document.body.setAttribute('data-theme','dark');document.documentElement.style.setProperty('--bg','#1e2230');document.documentElement.style.setProperty('--shadow-out','8px 8px 18px #141824,-8px -8px 18px #282e3c');document.documentElement.style.setProperty('--shadow-in','inset 5px 5px 12px #141824,inset -5px -5px 12px #282e3c');document.documentElement.style.setProperty('--text','#e0e8f8');document.documentElement.style.setProperty('--subtext','#6a7a9a');var i=document.querySelector('#themeBtn i');i.classList.add('fa-sun');i.classList.remove('fa-moon');}else{document.body.removeAttribute('data-theme');document.documentElement.style.setProperty('--bg','#e0ebe9');document.documentElement.style.setProperty('--shadow-out','8px 8px 18px #adc4c0,-8px -8px 18px #ffffff');document.documentElement.style.setProperty('--shadow-in','inset 5px 5px 12px #adc4c0,inset -5px -5px 12px #ffffff');document.documentElement.style.setProperty('--text','#2c3e60');document.documentElement.style.setProperty('--subtext','#8898b8');var i=document.querySelector('#themeBtn i');i.classList.remove('fa-sun');i.classList.add('fa-moon');}}
+function setTheme(main,light){document.documentElement.style.setProperty('--blue',main);document.documentElement.style.setProperty('--blue-light',light||main);}
+function toggleNotif(){var n=document.getElementById('notifModal');n.style.display=n.style.display==='block'?'none':'block';}
+function closeAll(back){if(back===undefined)back=true;document.getElementById('sidebar').classList.remove('active');document.getElementById('globalOverlay').classList.remove('active');document.querySelectorAll('.overlay').forEach(function(o){o.style.display='none';});document.getElementById('timerModal').style.display='none';document.getElementById('notifModal').style.display='none';document.body.style.overflow='auto';if(back&&history.state)history.back();}
+window.onpopstate=function(){closeAll(false);};
+var fc=0,ft=null;
+document.getElementById('footerCopy').addEventListener('click',function(){fc++;clearTimeout(ft);ft=setTimeout(function(){fc=0;},2000);if(fc>=5){fc=0;openAdminLogin();}});
+function openAdminLogin(){var pass=prompt('🔐 Admin Password:');if(pass==='malegend2026'||pass==='admin123'){document.getElementById('adminPanel').style.display='block';}else if(pass!==null){showToast('❌ Wrong Password!');}}
+var ks='',kt=null;
+document.addEventListener('keydown',function(e){ks+=e.key.toLowerCase();clearTimeout(kt);kt=setTimeout(function(){ks='';},1500);if(ks.indexOf('adm')>-1){ks='';openAdminLogin();}});
+
+// ===== REPORTS =====
+window.openReports = function(){
+    document.getElementById('reportsOverlay').style.display='flex';
+    document.body.style.overflow='hidden';
+    history.pushState({v:'reports'},'');
+    checkStoredProKey();
+};
+function checkStoredProKey(){
+    try{var stored=localStorage.getItem('ma_pro_key_data');if(stored){var data=JSON.parse(stored);if(new Date(data.expiresAt)>new Date()){activateProUI(data);}else{localStorage.removeItem('ma_pro_key_data');}}}catch(e){}
+}
+window.showKeyUnlock = function(){
+    var sec=document.getElementById('keyUnlockSection');
+    sec.style.display=sec.style.display==='block'?'none':'block';
+    if(sec.style.display==='block')sec.scrollIntoView({behavior:'smooth'});
+};
+
+// ===== REPORT TOOL FUNCTIONS =====
+window.checkProAndUseTool = function(key, url){
+    if(!window._isProUser){
+        showToast('🔒 Pro key chahiye! Admin se lein.');
+        var ks=document.getElementById('keyUnlockSection');
+        if(ks){ks.style.display='block';ks.scrollIntoView({behavior:'smooth'});}
+        return;
+    }
+    openReportToolUrl(url);
+};
+window.openReportTool = function(key, url){
+    openReportToolUrl(url);
+};
+function openReportToolUrl(url){
+    if(url && url!=='#'){window.open(url,'_blank');showToast('🚀 Tool Open Ho Raha Hai!');}
+    else{showToast('⚠️ Tool URL set nahi hai!');}
+}
+
+window.verifyProKey = async function(){
+    var key=document.getElementById('proKeyInput').value.trim().toUpperCase();
+    if(!key||key.length<10){showToast('⚠️ Key enter karo!');return;}
+    showToast('🔄 Key verify ho rahi hai...');
+    try{
+        var {initializeApp,getApps}=await import("https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js");
+        var {getDatabase,ref,get,set}=await import("https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js");
+        var apps=getApps();
+        var app2=apps.length>0?apps[0]:initializeApp({databaseURL:"https://my-store-a63af-default-rtdb.firebaseio.com/"});
+        var db2=getDatabase(app2);
+        var snap=await get(ref(db2,'proKeys'));
+        var data=snap.val();
+        if(!data){showToast('❌ Key galat hai!');return;}
+        var found=null,foundFk=null;
+        Object.keys(data).forEach(function(k){if(data[k].key===key){found=data[k];foundFk=k;}});
+        if(!found){showToast('❌ Key galat hai!');return;}
+        if(found.status==='revoked'){showToast('❌ Key revoke ho chuki hai!');return;}
+        var myId=_getDeviceId();
+        if(found.status==='used'&&found.usedBy&&found.usedBy!==myId){showToast('❌ Ye key kisi aur ne use ki hai!');return;}
+        if(new Date(found.expiresAt)<new Date()){showToast('❌ Key expire ho gayi!');return;}
+        await set(ref(db2,'proKeys/'+foundFk+'/status'),'used');
+        await set(ref(db2,'proKeys/'+foundFk+'/usedBy'),myId);
+        localStorage.setItem('ma_pro_key_data',JSON.stringify({key:key,plan:found.plan,expiresAt:found.expiresAt,note:found.note}));
+        activateProUI(found);
+        showToast('🎉 PRO UNLOCK HO GAYA!');
+    }catch(e){showToast('❌ Error: '+e.message);}
+};
+function _getDeviceId(){var id=localStorage.getItem('_ma_device_id');if(!id){id='dev_'+Date.now()+'_'+Math.random().toString(36).substr(2,9);localStorage.setItem('_ma_device_id',id);}return id;}
+function activateProUI(data){
+    window._isProUser=true;
+    window._proExpiry=data.expiresAt;
+    var exp=new Date(data.expiresAt).toLocaleDateString('en-PK',{day:'2-digit',month:'short',year:'numeric'});
+    var box=document.getElementById('proStatusBox');
+    if(box){box.style.display='block';document.getElementById('proStatusMsg').innerText=(data.plan==='weekly'?'Weekly':'Monthly')+' Plan Active • Expire: '+exp;}
+    document.querySelectorAll('[id^="lock_"]').forEach(function(el){el.innerHTML='<i class="fas fa-lock-open"></i> PRO';el.classList.add('unlocked');});
+    var ks=document.getElementById('keyUnlockSection');
+    if(ks)ks.style.display='none';
+}
+// Check stored key on load
+checkStoredProKey();
+</script>
+</body>
+</html>
