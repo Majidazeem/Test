@@ -419,9 +419,9 @@
             <div class="plan-price">0 PKR</div>
             <div class="plan-duration">Hamesha Free</div>
             <ul class="plan-features-list">
-                <li><i class="fas fa-check"></i>Basic Report Tool</li>
-                <li><i class="fas fa-check"></i>Standard Speed</li>
-                <li style="color:var(--subtext);"><i class="fas fa-times" style="color:var(--red);"></i>Mass Report</li>
+                <li><i class="fas fa-check"></i>Free Report Texts</li>
+                <li><i class="fas fa-check"></i>Copy & Paste Ready</li>
+                <li style="color:var(--subtext);"><i class="fas fa-times" style="color:var(--red);"></i>Pro Texts</li>
             </ul>
             <button class="btn-buy-plan btn-buy-free" onclick="playClick()">FREE USE KARO</button>
         </div>
@@ -431,9 +431,9 @@
             <div><span style="font-size:0.75rem;color:var(--subtext);font-weight:700;">Monthly: </span><span style="font-family:'Orbitron',sans-serif;font-size:1.1rem;color:var(--blue);font-weight:900;">500 PKR</span></div>
             <div class="plan-duration">Admin se key lo</div>
             <ul class="plan-features-list">
-                <li><i class="fas fa-check"></i>All Pro Tools</li>
-                <li><i class="fas fa-check"></i>Ultra Fast Speed</li>
-                <li><i class="fas fa-check"></i>Unlimited Reports</li>
+                <li><i class="fas fa-check"></i>All Pro Texts</li>
+                <li><i class="fas fa-check"></i>Powerful Reports</li>
+                <li><i class="fas fa-check"></i>Unlimited Access</li>
             </ul>
             <button class="btn-buy-plan btn-buy-pro" onclick="showKeyUnlock();playClick()">🔑 KEY SE UNLOCK</button>
         </div>
@@ -449,27 +449,18 @@
         <p style="font-size:0.75rem;color:var(--subtext);margin-top:10px;font-weight:600;">Key admin se WhatsApp ya Telegram par lein</p>
     </div>
 
-    <!-- FREE TOOLS from Firebase -->
+    <!-- FREE REPORT TEXTS -->
     <div class="report-tools-section" style="margin-top:8px;">
-        <h3><span class="section-badge">FREE</span> FREE REPORT TOOLS</h3>
-        <div id="freeToolsList"><div class="tools-loading"><i class="fas fa-spinner fa-spin"></i> Loading...</div></div>
-    </div>
-
-    <!-- PRO TOOLS from Firebase -->
-    <div class="report-tools-section">
-        <h3><span class="section-badge">PRO</span> PRO REPORT TOOLS</h3>
-        <div id="proToolsList"><div class="tools-loading"><i class="fas fa-spinner fa-spin"></i> Loading...</div></div>
-    </div>
-
-    <!-- REPORT TEXTS from Firebase -->
-    <div class="report-tools-section">
-        <h3><span class="section-badge">📝</span> REPORT TEXTS</h3>
-        <p style="font-size:0.78rem;color:var(--subtext);font-weight:600;margin-bottom:14px;padding:0 2px;">Yeh texts copy karke WhatsApp report mein paste karo</p>
+        <h3><span class="section-badge">🆓</span> FREE REPORT TEXTS</h3>
+        <p style="font-size:0.78rem;color:var(--subtext);font-weight:600;margin-bottom:14px;padding:0 2px;">Copy karo aur WhatsApp report mein paste karo</p>
         <div id="freeTextsList"><div class="tools-loading"><i class="fas fa-spinner fa-spin"></i> Loading...</div></div>
-        <div style="margin-top:6px;">
-            <div style="font-size:0.78rem;font-weight:900;color:var(--blue);margin-bottom:10px;display:flex;align-items:center;gap:6px;"><i class="fas fa-lock"></i> PRO TEXTS</div>
-            <div id="proTextsList"><div class="tools-loading"><i class="fas fa-spinner fa-spin"></i> Loading...</div></div>
-        </div>
+    </div>
+
+    <!-- PRO REPORT TEXTS -->
+    <div class="report-tools-section">
+        <h3><span class="section-badge">⭐</span> PRO REPORT TEXTS</h3>
+        <p style="font-size:0.78rem;color:var(--subtext);font-weight:600;margin-bottom:14px;padding:0 2px;">Pro key se unlock karo — powerful report texts</p>
+        <div id="proTextsList"><div class="tools-loading"><i class="fas fa-spinner fa-spin"></i> Loading...</div></div>
     </div>
 
     <!-- Contact -->
@@ -668,24 +659,6 @@ function renderToolCard(tool, isFree){
         +'</div></div></div>';
 }
 
-onValue(ref(db,'reportTools'), (snap) => {
-    const data = snap.val();
-    const freeEl = document.getElementById('freeToolsList');
-    const proEl = document.getElementById('proToolsList');
-    if(!freeEl || !proEl) return;
-    if(!data){
-        freeEl.innerHTML = '<div class="tools-loading">Koi free tool nahi hai abhi</div>';
-        proEl.innerHTML = '<div class="tools-loading">Koi pro tool nahi hai abhi</div>';
-        return;
-    }
-    const tools = Object.keys(data).map(k=>({firebaseKey:k,...data[k]}));
-    const freeTools = tools.filter(t=>t.type==='free');
-    const proTools = tools.filter(t=>t.type==='pro');
-    freeEl.innerHTML = freeTools.length ? freeTools.map(t=>renderToolCard(t,true)).join('') : '<div class="tools-loading">Koi free tool nahi hai abhi</div>';
-    proEl.innerHTML = proTools.length ? proTools.map(t=>renderToolCard(t,false)).join('') : '<div class="tools-loading">Koi pro tool nahi hai abhi</div>';
-    if(window._isProUser) updateProBadges(proTools);
-});
-
 // ===== REPORT TEXTS LOADER =====
 onValue(ref(db,'reportTexts'), (snap) => {
     const data = snap.val();
@@ -693,7 +666,7 @@ onValue(ref(db,'reportTexts'), (snap) => {
     const proEl = document.getElementById('proTextsList');
     if(!freeEl || !proEl) return;
     if(!data){
-        freeEl.innerHTML = '<div class="tools-loading">Koi text nahi hai abhi</div>';
+        freeEl.innerHTML = '<div class="tools-loading">Koi free text nahi hai abhi</div>';
         proEl.innerHTML = '<div class="tools-loading">Koi pro text nahi hai abhi</div>';
         return;
     }
@@ -707,32 +680,26 @@ onValue(ref(db,'reportTexts'), (snap) => {
 function renderTextCard(text, isFree){
     const id = 'rtc_'+text.firebaseKey;
     const bodyId = 'rtb_'+text.firebaseKey;
-    const lockHtml = isFree ? '' :
-        (!window._isProUser ?
-        '<div class="rt-lock-overlay" onclick="checkProAndUseTool(\''+text.firebaseKey+'\',\'#\')"><i class="fas fa-lock"></i><span>PRO UNLOCK KARO</span></div>' : '');
+    const lockHtml = (!isFree && !window._isProUser) ?
+        '<div class="rt-lock-overlay" onclick="showKeyUnlock();playClick()"><i class="fas fa-lock"></i><span>PRO UNLOCK KARO</span></div>' : '';
+    const badge = isFree
+        ? '<span class="pro-lock"><i class="fas fa-lock-open"></i> FREE</span>'
+        : '<span class="pro-lock" style="'+(window._isProUser?'color:var(--green)':'')+'"><i class="fas fa-'+(window._isProUser?'lock-open':'lock')+'"></i> PRO</span>';
     return '<div class="report-text-card" id="'+id+'">'
         +'<div class="rt-header">'
-        +'<div class="rt-title"><i class="fas fa-file-alt" style="color:var(--blue)"></i>'+text.title+'</div>'
-        +(isFree ? '<span class="pro-lock"><i class="fas fa-lock-open"></i> FREE</span>' : '<span class="pro-lock" style="'+(window._isProUser?'color:var(--green)':'')+'"><i class="fas fa-'+(window._isProUser?'lock-open':'lock')+'"></i> PRO</span>')
+        +'<div class="rt-title"><i class="fas fa-file-alt" style="color:var(--blue)"></i>'+escHtml(text.title||'')+'</div>'
+        +badge
         +'</div>'
         +'<div class="rt-body" id="'+bodyId+'">'+escHtml(text.body||'')+'</div>'
         +'<div class="rt-actions">'
-        +'<button class="btn-copy-text" id="copybtn_'+text.firebaseKey+'" onclick="copyReportText(\''+text.firebaseKey+'\','+(isFree?'true':'false')+')"><i class="fas fa-copy"></i> COPY TEXT</button>'
+        +'<button class="btn-copy-text" id="copybtn_'+text.firebaseKey+'" onclick="copyReportText(\''+text.firebaseKey+'\','+(isFree?'true':'false')+');playClick()"><i class="fas fa-copy"></i> COPY TEXT</button>'
         +'<button class="btn-expand-text" onclick="toggleExpandText(\''+bodyId+'\',this)"><i class="fas fa-chevron-down"></i></button>'
         +'</div>'
         +lockHtml
         +'</div>';
 }
 
-function escHtml(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
-
-function updateProBadges(proTools){
-    proTools.forEach(t=>{
-        const el=document.getElementById('lock_'+t.firebaseKey);
-        if(el){el.innerHTML='<i class="fas fa-lock-open"></i> PRO';el.classList.add('unlocked');}
-    });
-}
-window._updateProBadges = updateProBadges;
+function escHtml(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 
 window.saveSetting = async function(key,val){
     try{
