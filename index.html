@@ -787,7 +787,6 @@ window.verifyProKey=async function(){
         var data=snap.val();
         if(!data){showToast('❌ Koi key nahi mili! Admin se lo.');return;}
         var found=null,foundFk=null;
-        // Match karo - case insensitive
         Object.keys(data).forEach(function(k){
             if(data[k].key&&data[k].key.toUpperCase()===key){found=data[k];foundFk=k;}
         });
@@ -795,8 +794,9 @@ window.verifyProKey=async function(){
         if(found.status==='revoked'){showToast('❌ Key revoke ho chuki hai!');return;}
         if(new Date(found.expiresAt)<new Date()){showToast('❌ Key expire ho gayi!');return;}
         var myId=_getDeviceId();
-        if(found.status==='used'&&found.usedBy&&found.usedBy!==myId){showToast('❌ Ye key kisi aur device par use ho chuki hai!');return;}
-        // Mark as used
+        // ✅ FIX: Agar usedBy kisi aur device ka hai toh BLOCK - chahe status kuch bhi ho
+        if(found.usedBy&&found.usedBy!==myId){showToast('❌ Ye key kisi aur device par use ho chuki hai!');return;}
+        // Mark as used with device lock
         await set(ref(db2,'proKeys/'+foundFk+'/status'),'used');
         await set(ref(db2,'proKeys/'+foundFk+'/usedBy'),myId);
         localStorage.setItem('ma_pro_key_data',JSON.stringify({key:key,plan:found.plan,expiresAt:found.expiresAt}));
