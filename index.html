@@ -646,6 +646,42 @@ window.saveApp=async function(){
 };
 window.deleteApp=async function(fk,nm){if(!confirm('Delete "'+nm+'"?'))return;try{await remove(ref(db,`${AK}/${fk}`));showToast('🗑️ Deleted!');}catch(e){showToast('❌ Error!');}};
 window.editApp=function(fk){const a=window.appsData.find(x=>x.firebaseKey===fk);if(!a)return;document.getElementById('editId').value=fk;document.getElementById('fName').value=a.name||'';document.getElementById('fVersion').value=a.version||'';document.getElementById('fCategory').value=a.category||'whatsapp';document.getElementById('fSize').value=a.size||'';document.getElementById('fIcon').value=a.icon||'';document.getElementById('fLink').value=a.link||'';document.getElementById('fVideo').value=a.video||'';document.getElementById('fScreens').value=(a.screens||[]).join('\n');document.getElementById('fFeatures').value=(a.features||[]).join('\n');document.getElementById('fChangelog').value=(a.changelog||[]).join('\n');document.getElementById('formTitle').innerText='EDIT APP';document.getElementById('saveBtnText').innerText='UPDATE APP';if(a.icon){document.getElementById('iconPreviewImg').src=a.icon;document.getElementById('iconPreview').style.display='block';}document.querySelector('.admin-card').scrollIntoView({behavior:'smooth'});};
+
+// ===== PRO KEY VERIFY - same db instance use karta hai =====
+window.verifyProKey = async function(){
+    var keyInput = document.getElementById('proKeyInput');
+    if(!keyInput){showToast('⚠️ Key field nahi mila!');return;}
+    var key = keyInput.value.trim().toUpperCase();
+    if(!key){showToast('⚠️ Key enter karo!');return;}
+    showToast('🔄 Key verify ho rahi hai...');
+    try{
+        var snap = await get(ref(db,'proKeys'));
+        var data = snap.val();
+        if(!data){showToast('❌ Koi key nahi mili! Admin se lo.');return;}
+        var found = null, foundFk = null;
+        Object.keys(data).forEach(function(k){
+            var stored = (data[k].key||'').toString().trim().toUpperCase();
+            if(stored === key){ found = data[k]; foundFk = k; }
+        });
+        if(!found){showToast('❌ Key galat hai! Admin se sahi key lo.');return;}
+        if(found.status === 'revoked'){showToast('❌ Ye key block ho chuki hai!');return;}
+        if(new Date(found.expiresAt) < new Date()){showToast('❌ Key expire ho gayi! Nai key lo.');return;}
+        var myId = _getDeviceId();
+        if(found.status === 'used' && found.usedBy && found.usedBy !== myId){
+            showToast('❌ Ye key kisi aur device par chal rahi hai!');return;
+        }
+        // Mark used + save device
+        await set(ref(db,'proKeys/'+foundFk+'/status'),'used');
+        await set(ref(db,'proKeys/'+foundFk+'/usedBy'), myId);
+        localStorage.setItem('ma_pro_key_data', JSON.stringify({
+            key: key, plan: found.plan, expiresAt: found.expiresAt
+        }));
+        activateProUI(found);
+        showToast('🎉 PRO UNLOCK HO GAYA!');
+    }catch(e){
+        showToast('❌ Error: ' + e.message);
+    }
+};
 </script>
 
 <script>
@@ -773,37 +809,6 @@ window.copyReportText=function(key,isFree){
     navigator.clipboard.writeText(txt).then(function(){var btn=document.getElementById('copybtn_'+key);if(btn){btn.classList.add('copied');btn.innerHTML='<i class="fas fa-check"></i> COPIED!';}showToast('✅ Text Copy Ho Gaya!');setTimeout(function(){if(btn){btn.classList.remove('copied');btn.innerHTML='<i class="fas fa-copy"></i> COPY TEXT';}},2000);}).catch(function(){var ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);showToast('✅ Text Copy Ho Gaya!');});
 };
 window.toggleExpandText=function(bodyId,btn){var el=document.getElementById(bodyId);if(!el)return;el.classList.toggle('expanded');btn.querySelector('i').className=el.classList.contains('expanded')?'fas fa-chevron-up':'fas fa-chevron-down';};
-window.verifyProKey=async function(){
-    var key=document.getElementById('proKeyInput').value.trim().toUpperCase();
-    if(!key||key.length<5){showToast('⚠️ Key enter karo!');return;}
-    showToast('🔄 Key verify ho rahi hai...');
-    try{
-        var {initializeApp,getApps}=await import("https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js");
-        var {getDatabase,ref,get,set}=await import("https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js");
-        var apps=getApps();
-        var app2=apps.length>0?apps[0]:initializeApp({databaseURL:"https://my-store-a63af-default-rtdb.firebaseio.com/"});
-        var db2=getDatabase(app2);
-        var snap=await get(ref(db2,'proKeys'));
-        var data=snap.val();
-        if(!data){showToast('❌ Koi key nahi mili! Admin se lo.');return;}
-        var found=null,foundFk=null;
-        Object.keys(data).forEach(function(k){
-            if(data[k].key&&data[k].key.toUpperCase()===key){found=data[k];foundFk=k;}
-        });
-        if(!found){showToast('❌ Key galat hai! Dobara check karo.');return;}
-        if(found.status==='revoked'){showToast('❌ Key revoke ho chuki hai!');return;}
-        if(new Date(found.expiresAt)<new Date()){showToast('❌ Key expire ho gayi!');return;}
-        var myId=_getDeviceId();
-        // ✅ FIX: Agar usedBy kisi aur device ka hai toh BLOCK - chahe status kuch bhi ho
-        if(found.usedBy&&found.usedBy!==myId){showToast('❌ Ye key kisi aur device par use ho chuki hai!');return;}
-        // Mark as used with device lock
-        await set(ref(db2,'proKeys/'+foundFk+'/status'),'used');
-        await set(ref(db2,'proKeys/'+foundFk+'/usedBy'),myId);
-        localStorage.setItem('ma_pro_key_data',JSON.stringify({key:key,plan:found.plan,expiresAt:found.expiresAt}));
-        activateProUI(found);
-        showToast('🎉 PRO UNLOCK HO GAYA!');
-    }catch(e){showToast('❌ Error: '+e.message);}
-};
 function _getDeviceId(){var id=localStorage.getItem('_ma_device_id');if(!id){id='dev_'+Date.now()+'_'+Math.random().toString(36).substr(2,9);localStorage.setItem('_ma_device_id',id);}return id;}
 function activateProUI(data){
     window._isProUser=true;
