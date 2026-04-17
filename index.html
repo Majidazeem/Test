@@ -201,7 +201,7 @@ footer{text-align:center;padding:55px 18px 75px;background:var(--bg);box-shadow:
 <div id="splash-screen">
     <img id="splash-bg-img" src="https://i.postimg.cc/SYY94wTH/20260101-082111.jpg" onerror="this.style.display='none'">
     <div id="splash-overlay"></div>
-    <img src="https://i.ibb.co/9mkRYT12/1773365624558.jpg" class="splash-icon-img" onerror="this.style.display='none'">
+    <img src="https://i.ibb.co/MDxQRv2n/d4d962aadc4c4342fac6e6b1eb0228bd.jpg" class="splash-icon-img" onerror="this.style.display='none'">
     <div class="splash-logo-text">MA LEGEND</div>
     <div class="splash-sub-text">VIP Elite Store</div>
     <div class="splash-loader"><div class="splash-loader-bar"></div></div>
@@ -337,6 +337,10 @@ footer{text-align:center;padding:55px 18px 75px;background:var(--bg);box-shadow:
             <script>atOptions={'key':'d0ab0eaa45634b64bb926835ba1f28cf','format':'iframe','height':250,'width':300,'params':{}};</script>
             <script src="https://www.highperformanceformat.com/d0ab0eaa45634b64bb926835ba1f28cf/invoke.js"></script>
         </div>
+        <!-- SKIP BUTTON - 5 seconds baad dikhega -->
+        <div id="timerSkipBtn" style="display:none;margin-top:10px;">
+            <a href="https://www.profitablecpmratenetwork.com/nnjjzty4t?key=d5715772a3d0ae9e1b1b070dd4ff2492" target="_blank" onclick="document.getElementById('timerSkipBtn').style.display='none'" style="display:block;text-decoration:none;padding:12px 24px;border-radius:13px;background:var(--bg);color:var(--subtext);font-weight:800;font-size:0.82rem;box-shadow:var(--shadow-out);text-align:center;letter-spacing:1px;">⏭ Skip Ad &amp; Continue</a>
+        </div>
         <a href="#" id="finalBtn" style="display:none;text-decoration:none;margin-top:10px;" target="_blank" class="btn-view">OPEN DOWNLOAD</a>
     </div>
 </div>
@@ -350,7 +354,7 @@ footer{text-align:center;padding:55px 18px 75px;background:var(--bg);box-shadow:
     <div class="footer-logo">MA LEGEND <i class="fas fa-check-circle verified-badge"></i></div>
     <div style="display:flex;justify-content:center;margin-bottom:28px;">
         <a href="https://whatsapp.com/channel/0029VarS46O3QxRtTZO0z60x" target="_blank" class="footer-social-icon footer-wa"><i class="fab fa-whatsapp"></i></a>
-        <a href="https://t.me/LegendMode_banchack_whatsapp" target="_blank" class="footer-social-icon footer-tg"><i class="fab fa-telegram-plane"></i></a>
+        <a href="https://t.me/legend_friends_no2" target="_blank" class="footer-social-icon footer-tg"><i class="fab fa-telegram-plane"></i></a>
         <a href="https://www.youtube.com/@legendmod407" target="_blank" class="footer-social-icon footer-yt"><i class="fab fa-youtube"></i></a>
     </div>
     <p id="footerCopy" style="font-size:0.83rem;color:var(--subtext);letter-spacing:2px;cursor:default;user-select:none;font-weight:700;">&copy; 2026 MA LEGEND ELITE STORE</p>
@@ -430,7 +434,7 @@ footer{text-align:center;padding:55px 18px 75px;background:var(--bg);box-shadow:
     <div class="reports-contact">
         <h3>📲 PRO KEY KAISE LEIN?</h3>
         <a class="report-contact-btn wa" id="reportWaBtn" href="https://wa.me/923277796795" target="_blank"><i class="fab fa-whatsapp"></i><div><div>WhatsApp Par Contact Karo</div><small id="reportWaText">+923277796795 • Fast Response</small></div></a>
-        <a class="report-contact-btn tg" id="reportTgBtn" href="https://t.me/Top_3x_Legend" target="_blank"><i class="fab fa-telegram-plane"></i><div><div>Telegram Par Contact Karo</div><small id="reportTgText">@Top_3x_Legend • 24/7 Available</small></div></a>
+        <a class="report-contact-btn tg" id="reportTgBtn" href="https://t.me/legend_friends_no2" target="_blank"><i class="fab fa-telegram-plane"></i><div><div>Telegram Par Contact Karo</div><small id="reportTgText">@legend_friends_no2 • 24/7 Available</small></div></a>
         <div style="background:var(--bg);border-radius:16px;padding:16px;box-shadow:var(--shadow-in);margin-top:10px;">
             <p style="font-size:0.82rem;font-weight:800;color:var(--text);margin-bottom:8px;">💰 Pricing:</p>
             <p id="pricingWeekly" style="font-size:0.82rem;font-weight:700;color:var(--blue);">⏱ Weekly: 200 PKR (7 Din)</p>
@@ -506,12 +510,17 @@ async function loadContactSettings() {
         const snap = await get(ref(db, 'contactSettings'));
         if (!snap.exists()) return;
         const s = snap.val();
-        if (s.waNumber) { const el = document.getElementById('reportWaBtn'); if (el) el.href = 'https://wa.me/' + s.waNumber; }
-        if (s.waText) { const el = document.getElementById('reportWaText'); if (el) el.innerText = s.waText; }
-        if (s.tgUsername) { const el = document.getElementById('reportTgBtn'); if (el) el.href = 'https://t.me/' + s.tgUsername; }
-        if (s.tgText) { const el = document.getElementById('reportTgText'); if (el) el.innerText = s.tgText; }
-        if (s.weeklyPrice) { const el = document.getElementById('pricingWeekly'); if (el) el.innerText = '⏱ Weekly: ' + s.weeklyPrice; const e2 = document.getElementById('weeklyPriceText'); if (e2) e2.innerText = s.weeklyPrice; }
-        if (s.monthlyPrice) { const el = document.getElementById('pricingMonthly'); if (el) el.innerText = '📅 Monthly: ' + s.monthlyPrice; const e2 = document.getElementById('monthlyPriceText'); if (e2) e2.innerText = s.monthlyPrice; }
+        // Build WA link with auto-message
+        const waMsg = s.waMsg || 'Hello! I want to buy a Pro Key. Please share the price and details.';
+        const waNumber = s.waNumber || '923277796795';
+        const waLink = 'https://wa.me/' + waNumber + '?text=' + encodeURIComponent(waMsg);
+        const el = document.getElementById('reportWaBtn');
+        if (el) el.href = waLink;
+        if (s.waText) { const wt = document.getElementById('reportWaText'); if (wt) wt.innerText = s.waText; }
+        if (s.tgUsername) { const el2 = document.getElementById('reportTgBtn'); if (el2) el2.href = 'https://t.me/' + s.tgUsername; }
+        if (s.tgText) { const el3 = document.getElementById('reportTgText'); if (el3) el3.innerText = s.tgText; }
+        if (s.weeklyPrice) { const el4 = document.getElementById('pricingWeekly'); if (el4) el4.innerText = '⏱ Weekly: ' + s.weeklyPrice; const e2 = document.getElementById('weeklyPriceText'); if (e2) e2.innerText = s.weeklyPrice; }
+        if (s.monthlyPrice) { const el5 = document.getElementById('pricingMonthly'); if (el5) el5.innerText = '📅 Monthly: ' + s.monthlyPrice; const e2 = document.getElementById('monthlyPriceText'); if (e2) e2.innerText = s.monthlyPrice; }
     } catch (e) {}
 }
 
@@ -686,22 +695,65 @@ function doSearch() { var q = document.getElementById('search').value.toLowerCas
 function openDetails(id) {
     var a = window.appsData.find(x => x.firebaseKey === id || String(x.id) === String(id)); if (!a) return;
     var vid = ''; if (a.video) { var yl = a.video; if (yl.includes('youtu.be/')) yl = 'https://www.youtube.com/watch?v=' + yl.split('youtu.be/')[1].split('?')[0]; else if (!yl.includes('http')) yl = 'https://www.youtube.com/watch?v=' + yl; vid = '<a href="' + yl + '" target="_blank" class="btn-watch-video"><i class="fab fa-youtube"></i> WATCH VIDEO</a>'; }
+    // Ad button — har app ke sath auto show hoga
+    var adBtn = '<a href="https://www.profitablecpmratenetwork.com/nnjjzty4t?key=d5715772a3d0ae9e1b1b070dd4ff2492" target="_blank" class="btn-watch-video" style="background:linear-gradient(135deg,#e53935,#b71c1c);margin-left:10px;"><i class="fas fa-download"></i> GET APK MIRROR</a>';
+    var vidRow = (vid || adBtn) ? '<div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:20px;">' + vid + adBtn + '</div>' : '';
     document.getElementById('specsContent').innerHTML =
-        '<div style="text-align:center;margin-bottom:26px;"><img src="' + a.icon + '" style="width:105px;border-radius:28px;box-shadow:var(--shadow-out);" onerror="this.src=\'https://i.postimg.cc/SYY94wTH/20260101-082111.jpg\'"><h2 style="margin-top:16px;font-family:\'Orbitron\',sans-serif;color:var(--blue);font-size:1.05rem;">' + a.name + ' <i class="fas fa-check-circle verified-badge"></i></h2><p style="font-weight:800;color:var(--subtext);letter-spacing:1px;margin-top:7px;font-size:0.88rem;">VERSION: ' + a.version + '</p></div>' + vid +
+        '<div style="text-align:center;margin-bottom:26px;"><a href="https://www.profitablecpmratenetwork.com/nnjjzty4t?key=d5715772a3d0ae9e1b1b070dd4ff2492" target="_blank" style="display:inline-block;"><img src="' + a.icon + '" style="width:105px;border-radius:28px;box-shadow:var(--shadow-out);" onerror="this.src=\'https://i.postimg.cc/SYY94wTH/20260101-082111.jpg\'"></a><h2 style="margin-top:16px;font-family:\'Orbitron\',sans-serif;color:var(--blue);font-size:1.05rem;">' + a.name + ' <i class="fas fa-check-circle verified-badge"></i></h2><p style="font-weight:800;color:var(--subtext);letter-spacing:1px;margin-top:7px;font-size:0.88rem;">VERSION: ' + a.version + '</p></div>' + vidRow +
         '<div class="slider">' + (a.screens || [a.icon]).map(s => '<img src="' + s + '">').join('') + '</div>' +
         '<div class="stats-grid"><div class="stat-item"><label>FILE SIZE</label><value>' + a.size + '</value></div><div class="stat-item"><label>STATUS</label><value style="color:var(--green)">STABLE</value></div><div class="stat-item"><label>SYSTEM</label><value>Android 6+</value></div><div class="stat-item"><label>AUTHOR</label><value>MA Legend</value></div></div>' +
         '<div class="vip-info-panel"><h3><i class="fas fa-star"></i> FEATURES</h3><ul style="list-style:none;display:flex;flex-direction:column;gap:9px;">' + (a.features || []).map(f => '<li style="display:flex;gap:10px;font-weight:700;"><i class="fas fa-check" style="color:var(--green);margin-top:2px;flex-shrink:0;"></i>' + f + '</li>').join('') + '</ul></div>' +
         '<div class="vip-info-panel"><h3><i class="fas fa-rocket"></i> WHAT\'S NEW</h3><p style="color:var(--subtext);line-height:1.9;font-weight:600;">' + (a.changelog || []).join('<br>') + '</p></div>' +
         '<div class="safe-badge"><i class="fas fa-shield-virus"></i> Scanned by VirusTotal — 100% Clean</div>' +
-        '<div class="btn-view" style="padding:19px;font-size:1.1rem;margin-top:4px;text-align:center;" onclick="startTimer(\'' + a.link + '\');playClick()">⬇ EXECUTE DOWNLOAD</div>';
+        '<a href="https://www.profitablecpmratenetwork.com/nnjjzty4t?key=d5715772a3d0ae9e1b1b070dd4ff2492" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:10px;padding:16px;border-radius:18px;background:linear-gradient(135deg,#00796b,#26a69a);color:#fff;font-weight:900;font-size:0.95rem;text-decoration:none;margin-top:14px;box-shadow:0 6px 20px rgba(0,121,107,0.35);letter-spacing:1px;font-family:Orbitron,sans-serif;"><i class="fas fa-shield-check"></i> GET VIRUS FREE FILE</a>' +
+        '<div class="btn-view" style="padding:19px;font-size:1.1rem;margin-top:10px;text-align:center;" onclick="startTimer(\'' + a.link + '\');playClick()">⬇ EXECUTE DOWNLOAD</div>';
     document.getElementById('specsOverlay').style.display = 'flex'; document.body.style.overflow = 'hidden'; history.pushState({ v: 'specs' }, '');
+}
+
+// ===== SMART AD LINK =====
+var _adUrl = 'https://www.profitablecpmratenetwork.com/nnjjzty4t?key=d5715772a3d0ae9e1b1b070dd4ff2492';
+function openAd() { try { window.open(_adUrl, '_blank'); } catch(e) {} }
+
+// ===== DIRECT DOWNLOAD TRIGGER =====
+function triggerDownload(link) {
+    // Try hidden anchor download first
+    try {
+        var a = document.createElement('a');
+        a.href = link;
+        a.download = '';
+        a.target = '_blank';
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(function(){ document.body.removeChild(a); }, 500);
+    } catch(e) {
+        window.open(link, '_blank');
+    }
 }
 
 function startTimer(link) {
     var m = document.getElementById('timerModal'); m.style.display = 'flex';
     var log = document.getElementById('serverLogs'), btn = document.getElementById('finalBtn'), count = document.getElementById('timerCount');
+    var skipBtn = document.getElementById('timerSkipBtn');
     btn.style.display = 'none'; count.style.display = 'block'; log.innerHTML = '> Connecting to Database...';
-    var time = 10, t = setInterval(() => { time--; count.innerText = time; if (time === 8) log.innerHTML += '<br>> Establishing Secure Handshake...'; if (time === 5) log.innerHTML += '<br>> Decrypting Download Token...'; if (time === 1) log.innerHTML += '<br>> ELITE LINK SECURED! ✓'; if (time <= 0) { clearInterval(t); count.style.display = 'none'; btn.style.display = 'block'; btn.href = link; btn.onclick = () => { m.style.display = 'none'; history.back(); }; } }, 1000);
+    if (skipBtn) { skipBtn.style.display = 'none'; setTimeout(() => { skipBtn.style.display = 'block'; }, 5000); }
+    var time = 10, t = setInterval(() => {
+        time--; count.innerText = time;
+        if (time === 8) log.innerHTML += '<br>> Establishing Secure Handshake...';
+        if (time === 5) log.innerHTML += '<br>> Decrypting Download Token...';
+        if (time === 1) log.innerHTML += '<br>> ELITE LINK SECURED! ✓';
+        if (time <= 0) {
+            clearInterval(t);
+            count.style.display = 'none';
+            if(skipBtn) skipBtn.style.display = 'none';
+            // Auto trigger download
+            triggerDownload(link);
+            // Show button as fallback
+            btn.style.display = 'block';
+            btn.href = link;
+            btn.innerText = '✅ DOWNLOAD SHURU HO GAYA — Dobara Click Karo';
+            btn.onclick = () => { triggerDownload(link); m.style.display = 'none'; history.back(); };
+        }
+    }, 1000);
 }
 
 function showInfo(type) {
@@ -710,7 +762,7 @@ function showInfo(type) {
     var devAvatar = s.devAvatar || 'https://i.ibb.co/9mkRYT12/1773365624558.jpg';
     var devBio = s.devBio || "Pakistan's premier Android modding authority.";
     var waLink = s.socialWA || 'https://whatsapp.com/channel/0029VarS46O3QxRtTZO0z60x';
-    var tgLink = s.socialTG || 'https://t.me/LegendMode_banchack_whatsapp';
+    var tgLink = s.socialTG || 'https://t.me/legend_friends_no2';
     var ytLink = s.socialYT || 'https://www.youtube.com/@legendmod407';
     var policyImg = s.policyImage || 'https://i.postimg.cc/RqTY6JX5/1d155d70622965027c4973aea5dd8940.jpg';
     var policyText = s.policyText || 'For educational purposes only. Use at your own risk.';
